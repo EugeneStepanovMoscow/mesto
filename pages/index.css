@@ -1,0 +1,74 @@
+@import url(../vendor/normalize.css);
+
+@import url(../vendor/Fonts/fonts.css); /*Дробавить Inter regular - 400 */
+
+
+
+
+
+.root {
+  background-color: #000;
+  color: #FFF;
+  font-family: 'Inter', 'Arial', sans-serif;
+}
+
+
+.header {
+  width: 880px;
+  height: 74px;
+  margin: 0 auto;
+  outline: 1px solid red;
+}
+.header__logo {
+}
+.content {
+  margin: 0 auto;
+}
+.profile {
+  outline: 1px solid blueviolet;
+  margin: 0 auto;
+  width: 880px;
+  display: flex;
+  justify-content: space-between;
+}
+.profile__person {
+  outline: 1px solid gold;
+  display: flex;
+}
+.profile__image {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+}
+.profile__info {
+}
+.profile__person-name {
+}
+.profile__person-description {
+}
+.profile__button-edit {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #FFF;
+}
+
+.button-placeadd {
+  width: 150px;
+  height: 50px;
+  border: 2px solid #FFF;
+  border-radius: 2px;
+}
+.button-placeadd__plus {
+}
+
+.places {
+  margin: 0 auto;
+  width: 880px;
+  outline: 1px solid greenyellow;
+}
+.footer {
+  outline: 1px solid orchid;
+  width: 880px;
+  margin: 0 auto;
+
+}
