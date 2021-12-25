@@ -48,11 +48,11 @@
     margin-left: 27px;
   }
 }
+
+
 .content {
   margin: 0 auto;
 }
-
-
 .profile {
   margin: 40px auto 0 auto;
   width: 880px;
@@ -128,8 +128,7 @@
   }
 }
 
-
-.profile__button-edit {
+.profile__btn-edit {
   width: 24px;
   height: 24px;
   box-sizing: border-box;
@@ -139,15 +138,20 @@
   right: 0px;
 }
 @media screen and (max-width: 914px) {
-  .profile__button-edit {
+  .profile__btn-edit {
     width: 18px;
     height: 18px;
     top: 8px;
     right: 19px;
   }
 }
+.profile__btn-edit:hover {
+  opacity: .6;
+  transition: .5s;
+  cursor: pointer;
+}
 
-.profile__button-pen {
+.profile__btn-edit-img {
   width: 10px;
   height: 10px;
   position: absolute;
@@ -155,7 +159,7 @@
   left: 6px;
 }
 @media screen and (max-width: 914px) {
-  .profile__button-pen {
+  .profile__btn-edit-img {
     width: 7.5px;
     height: 7.5px;
     top: 4.25px;
@@ -163,10 +167,7 @@
   }
 }
 
-
-
-
-.button-placeadd {
+.profile__btn-add {
   width: 150px;
   height: 50px;
   border: 2px solid #FFF;
@@ -175,11 +176,17 @@
   display: flex;
 }
 @media screen and (max-width: 914px) {
-  .button-placeadd {
+  .profile__btn-add {
     width: 282px;
   }
 }
-.button-placeadd__plus {
+.profile__btn-add:hover {
+  opacity: .6;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.profile__btn-add-img {
   width: 22px;
   height: 22px;
   margin: auto;
@@ -269,4 +276,126 @@
   font-size: 18px;
   line-height: 21.78px;
   color: #545454
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(0, 0, 0, .5);
+  display: none;
+}
+.overlay_on {
+  display: flex;
+  justify-content: center;
+}
+
+.popup {
+  width: 430px;
+  height: 330px;
+  background-color: #FFF;
+  border-radius: 10px;
+  margin-top: 195px;
+  padding: 34px 36px 37px 36px;
+  box-sizing: border-box;
+  position: relative;
+}
+@media screen and (max-width: 914px) {
+  .popup {
+    width: 282px;
+    height: 322px;
+    margin-top: 123px;
+    padding: 25px 22px 25px 22px;
+  }
+}
+
+.popup__title {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29.05px;
+  color: #000;
+  margin: 0;
+}
+@media screen and (max-width: 914px) {
+  .popup__title {
+    font-size: 18px;
+    line-height: 21.78px;
+  }
+}
+/*Размеры импутов и стили ________________          */
+.popup__inp {
+  width: 100%;
+  height: 27;
+}
+.popup__inp_info_name {
+  margin: 54px 0 30px 0;
+}
+@media screen and (max-width: 914px) {
+  .popup__inp_info_name {
+    margin: 75px 0 30px 0;
+  }
+}
+
+.popup__inp_info_description {
+  margin-bottom: 48px;
+}
+@media screen and (max-width: 914px) {
+  .popup__inp_info_description  {
+    margin: 0 0 45px 0;
+  }
+}
+
+.popup__btn-save {
+  width: 100%;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 1);
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 914px) {
+  .popup__btn-save {
+    height: 46px;
+  }
+}
+.popup__btn-save:hover {
+  background-color: rgba(0, 0, 0, .8);
+  transition: .5s;
+  cursor: pointer;
+}
+.popup__btn-save-text {
+  font-weight: 400;
+  font-style: 18px;
+  line-height: 21.78px;
+}
+@media screen and (max-width: 914px) {
+  .popup__btn-save-text {
+    font-style: 14px;
+    line-height: 16.94px;
+  }
+}
+
+.popup__btn-close {
+  width: 32px;
+  height: 32px;
+  transform: rotate(45deg);
+  position: absolute;
+  right: -40px;
+  top: -40px;
+}
+@media screen and (max-width: 914px) {
+  .popup__btn-close {
+    width: 20px;
+    height: 20px;
+    right: 0;
+    top: -32px;
+  }
+}
+.popup__btn-close:hover {
+  opacity: .6;
+  transition: .5s;
+  cursor: pointer;
 }

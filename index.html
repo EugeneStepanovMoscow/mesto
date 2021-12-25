@@ -21,14 +21,14 @@
           <img class="profile__image" src="./images/Cousto.jpg" alt="Кусто">
             <div class="profile__info">
               <h1 class="profile__person-name">Жак-Ив Кусто</h1>
-              <div class="profile__button-edit">
-                <img class="profile__button-pen" src="./images/Pen.svg" alt="Карандаш">
+              <div class="profile__btn-edit">
+                <img class="profile__btn-edit-img" src="./images/Pen.svg" alt="Карандаш">
               </div>
               <p class="profile__person-description">Исследователь океана</p>
             </div>
         </div>
-        <div class="button-placeadd">
-          <img class="button-placeadd__plus" src="./images/Plus.svg" alt="Плюс">
+        <div class="profile__btn-add">
+          <img class="profile__btn-add-img" src="./images/Plus.svg" alt="Плюс">
         </div>
       </section>
 
@@ -75,13 +75,25 @@
             <img class="place__like" src="./images/Heart.svg" alt="Лайк">
           </div>
         </div>
-
       </section>
-
     </main>
     <footer class="footer">
       <p class="footer__info">© 2020 Mesto Russia</p>
     </footer>
+    <section class="overlay overlay_on">
+      <div class="popup">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input class="popup__inp popup__inp_info_name">
+        <input class="popup__inp popup__inp_info_description">
+        <div class="popup__btn-save">
+          <p class="popup__btn-save-text">Сохранить</p>
+        </div>
+        <img class="popup__btn-close" src="./images/Plus.svg"> <!--Почистить файлв свг. убрать ссылки Проверить позиционирование при поорете креста-->
+      </div>
+    </section>
+
+
+
   </div>
 
 </body>
