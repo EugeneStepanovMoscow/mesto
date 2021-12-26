@@ -10,6 +10,6 @@
 * Изменение информации в профиле.
 
 Работа выложена на GitHubPages
-ссылка: https://eugenestepanovmoscow.github.io/russian-travel/
+ссылка: https://eugenestepanovmoscow.github.io/mesto/
 
 Исполнитель - **Степанов Евгений**
