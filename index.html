@@ -20,11 +20,11 @@
         <div class="profile__person">
           <img class="profile__image" src="./images/Cousto.jpg" alt="Кусто">
             <div class="profile__info">
-              <h1 class="profile__person-name">Жак-Ив Кусто</h1>
+              <h1 class="profile__person-name profile__person-name_overflow">Жак-Ив Кусто</h1>
               <div class="profile__btn-edit">
                 <img class="profile__btn-edit-img" src="./images/Pen.svg" alt="Карандаш">
               </div>
-              <p class="profile__person-description">Исследователь океана</p>
+              <p class="profile__person-description profile__person-description_overflow">Исследователь океана</p>
             </div>
         </div>
         <div class="profile__btn-add">
@@ -34,44 +34,44 @@
 
       <section class="places">
         <div class="place">
-          <div class="place__image"></div>
+          <img class="place__image" src="./images/Elbrus.jpg" alt="Ельбрус">
+          <div class="place__title">
+            <h2 class="place__name">Карачаево-Ч...</h2>
+            <img class="place__like" src="./images/Heart.svg" alt="Лайк">
+          </div>
+        </div>
+        <div class="place">
+          <img class="place__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
           <div class="place__title">
             <h2 class="place__name">Карачаевск</h2>
             <img class="place__like" src="./images/Heart.svg" alt="Лайк">
           </div>
         </div>
         <div class="place">
-          <div class="place__image"></div>
+          <img class="place__image" src="./images/Elbrus2.jpg" alt="Ельбрус">
           <div class="place__title">
-            <h2 class="place__name">Карачаевск</h2>
+            <h2 class="place__name">Гора Эльбрус</h2>
             <img class="place__like" src="./images/Heart.svg" alt="Лайк">
           </div>
         </div>
         <div class="place">
-          <div class="place__image"></div>
+          <img class="place__image" src="./images/Dombai2.jpg" alt="Домбай">
           <div class="place__title">
-            <h2 class="place__name">Карачаевск</h2>
+            <h2 class="place__name">Домбай</h2>
             <img class="place__like" src="./images/Heart.svg" alt="Лайк">
           </div>
         </div>
         <div class="place">
-          <div class="place__image"></div>
+          <img class="place__image" src="./images/Elbrus.jpg" alt="Ельбрус">
           <div class="place__title">
-            <h2 class="place__name">Карачаевск</h2>
+            <h2 class="place__name">Гора Эльбрус</h2>
             <img class="place__like" src="./images/Heart.svg" alt="Лайк">
           </div>
         </div>
         <div class="place">
-          <div class="place__image"></div>
+          <img class="place__image" src="./images/Dombai.jpg" alt="Домбай">
           <div class="place__title">
-            <h2 class="place__name">Карачаевск</h2>
-            <img class="place__like" src="./images/Heart.svg" alt="Лайк">
-          </div>
-        </div>
-        <div class="place">
-          <div class="place__image"></div>
-          <div class="place__title">
-            <h2 class="place__name">Карачаевск</h2>
+            <h2 class="place__name">Домбай</h2>
             <img class="place__like" src="./images/Heart.svg" alt="Лайк">
           </div>
         </div>
@@ -80,21 +80,18 @@
     <footer class="footer">
       <p class="footer__info">© 2020 Mesto Russia</p>
     </footer>
-    <section class="overlay overlay_on">
+    <section class="overlay">
       <div class="popup">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__inp popup__inp_info_name">
-        <input class="popup__inp popup__inp_info_description">
+        <input class="popup__inp popup__inp_info_name" name="name" value="Type here">
+        <input class="popup__inp popup__inp_info_description" name="description" value="Type here">
         <div class="popup__btn-save">
           <p class="popup__btn-save-text">Сохранить</p>
         </div>
-        <img class="popup__btn-close" src="./images/Plus.svg"> <!--Почистить файлв свг. убрать ссылки Проверить позиционирование при поорете креста-->
+        <img class="popup__btn-close" src="./images/Plus.svg" alt="Плюс"> \
       </div>
     </section>
-
-
-
   </div>
-
+<script src="./scripts/script.js"></script>
 </body>
 </html>

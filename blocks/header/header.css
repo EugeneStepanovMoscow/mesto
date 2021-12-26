@@ -1,0 +1,18 @@
+.header {
+  width: 880px;
+  height: 74px;
+  margin: 0 auto;
+  border-bottom: 1px solid #545454; /*цвет изменить*/
+  box-sizing: border-box;
+}
+@media screen and (max-width: 614px) {
+  .header{
+    width: 282px;
+    height: 56px;
+  }
+}
+@media screen and (min-width: 615px) and (max-width: 914px) {
+  .header {
+    width: 581px;
+  }
+}

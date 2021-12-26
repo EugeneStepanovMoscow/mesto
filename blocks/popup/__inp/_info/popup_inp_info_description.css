@@ -1,0 +1,8 @@
+.popup__inp_info_description {
+  margin-bottom: 48px;
+}
+@media screen and (max-width: 914px) {
+  .popup__inp_info_description  {
+    margin: 0 0 45px 0;
+  }
+}

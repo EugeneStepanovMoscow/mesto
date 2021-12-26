@@ -1,401 +1,48 @@
 @import url(../vendor/normalize.css);
 
-@import url(../vendor/Fonts/fonts.css); /*Дробавить Inter regular - 400 */
+@import url(../vendor/Fonts/fonts.css);
 
+@import url(../blocks/root/root.css);
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
 
-.root {
-  background-color: #000;
-  color: #FFF;
-  font-family: 'Inter', 'Arial', sans-serif;
-  padding-top: 45px;
-  padding-bottom: 60px;
-}
-@media screen and (max-width: 914px) {
-  .root {
-    padding-top: 28px;
-    padding-bottom: 36px;
-  }
-}
+@import url(../blocks/content/content.css);
 
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__person/profile__person.css);
+@import url(../blocks/profile/__image/profile__image.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__person-name/profile__person-name.css);
+@import url(../blocks/profile/__person-name/_overflow/profile__person-name_overflow.css);
+@import url(../blocks/profile/__person-description/profile__person-description.css);
+@import url(../blocks/profile/__person-description/_overflow/profile__person-description_overflow.css);
+@import url(../blocks/profile/__btn-edit/profile__btn-edit.css);
+@import url(../blocks/profile/__btn-edit-img/profile__btn-edit-img.css);
+@import url(../blocks/profile/__btn-add/profile__btn-add.css);
+@import url(../blocks/profile/__btn-add-img/profile__btn-add-img.css);
 
+@import url(../blocks/places/places.css);
 
-.header {
-  width: 880px;
-  height: 74px;
-  margin: 0 auto;
-  border-bottom: 1px solid #545454; /*цвет изменить*/
-  box-sizing: border-box;
-}
-@media screen and (max-width: 614px) {
-  .header{
-    width: 282px;
-    height: 56px;
-  }
-}
-@media screen and (min-width: 615px) and (max-width: 914px) {
-  .header {
-    width: 581px;
-  }
-}
-.header__logo {
-  width: 140px;
-  height: 33px;
-}
-@media screen and (max-width: 914px) {
-  .header__logo {
-    width: 104px;
-    height: 24px;
-    margin-left: 27px;
-  }
-}
+@import url(../blocks/place/place.css);
+@import url(../blocks/place/__image/place__image.css);
+@import url(../blocks/place/__title/place__title.css);
+@import url(../blocks/place/__name/place__name.css);
+@import url(../blocks/place/__like/place__like.css);
 
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__info/footer__info.css);
 
-.content {
-  margin: 0 auto;
-}
-.profile {
-  margin: 40px auto 0 auto;
-  width: 880px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-@media screen and (max-width: 914px) {
-  .profile {
-    width: 282px;
-    margin: 42px auto 0 auto;
-    flex-direction: column;
-  }
-}
+@import url(../blocks/overlay/overlay.css);
+@import url(../blocks/overlay/_on/overlay_on.css);
 
-.profile__person {
-  display: flex;
-  align-items: center;
-}
-@media screen and (max-width: 914px) {
-  .profile__person {
-    flex-direction: column;
-  }
-}
-
-
-.profile__image {
-  width: 120px;
-  height: 120px;
-  border-radius: 60px;
-}
-
-.profile__info {
-  width: 336px;
-  margin-left: 30px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-@media screen and (max-width: 914px) {
-  .profile__info {
-    margin: 26px 0 0 0;
-    width: 282px;
-  }
-}
-
-
-.profile__person-name {
-  margin: 0;
-  font-weight: 500;
-  font-size: 42px;
-  line-height: 48px;
-}
-@media screen and (max-width: 914px) {
-  .profile__person-name {
-    margin: auto;
-    font-size: 27px;
-    line-height: 32.68px;
-  }
-}
-
-.profile__person-description {
-  margin: 16px 0 0 0;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 21.78px;
-}
-@media screen and (max-width: 914px) {
-  .profile__person-description {
-    margin: 14px auto 36px auto;
-    font-size: 14px;
-    line-height: 16.94px;
-  }
-}
-
-.profile__btn-edit {
-  width: 24px;
-  height: 24px;
-  box-sizing: border-box;
-  border: 1px solid #FFF;
-  position: absolute;
-  top: 15px;
-  right: 0px;
-}
-@media screen and (max-width: 914px) {
-  .profile__btn-edit {
-    width: 18px;
-    height: 18px;
-    top: 8px;
-    right: 19px;
-  }
-}
-.profile__btn-edit:hover {
-  opacity: .6;
-  transition: .5s;
-  cursor: pointer;
-}
-
-.profile__btn-edit-img {
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top: 6px;
-  left: 6px;
-}
-@media screen and (max-width: 914px) {
-  .profile__btn-edit-img {
-    width: 7.5px;
-    height: 7.5px;
-    top: 4.25px;
-    left: 4.25px;
-  }
-}
-
-.profile__btn-add {
-  width: 150px;
-  height: 50px;
-  border: 2px solid #FFF;
-  border-radius: 2px;
-  box-sizing: border-box;
-  display: flex;
-}
-@media screen and (max-width: 914px) {
-  .profile__btn-add {
-    width: 282px;
-  }
-}
-.profile__btn-add:hover {
-  opacity: .6;
-  transition: .5s;
-  cursor: pointer;
-}
-
-.profile__btn-add-img {
-  width: 22px;
-  height: 22px;
-  margin: auto;
-}
-
-/*прописать размеры карточек на добавление*/
-.places {
-  margin: 50px auto 0 auto;
-  width: 880px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  column-gap: 17px;
-  row-gap: 20px;
-}
-
-@media screen and (max-width: 614px) {
-  .places {
-    width: 282px;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    column-gap: 0;
-  }
-}
-@media screen and (min-width: 615px) and (max-width: 914px) {
-  .places {
-    width: 578px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-  }
-}
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__inp/popup__inp.css);
+@import url(../blocks/popup/__inp/_info/popup__inp_info_name.css);
+@import url(../blocks/popup/__inp/_info/popup_inp_info_description.css);
+@import url(../blocks/popup/__btn-save/popup__btn-save.css);
+@import url(../blocks/popup/__btn-save-text/popup__btn-save-text.css);
+@import url(../blocks/popup/__btn-close/popup__btn-close.css);
 
 
 
-
-
-.place {
-  margin: 0;
-  width: 282px;
-  height: 361px;
-  background-color: #FFF;
-  border-radius: 10px;
-  overflow: hidden;
-}
-.place__image {
-  width: 100%;
-  height: 282px;
-  background-image: url("../images/Karachaevsk.jpg");
-  background-size: cover;
-}
-.place__title {
-  width: 246px;
-  margin: 25px auto 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-.place__name {
-  margin: 0;
-  color: #000;
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 29.05px
-}
-.place__like {
-  width: 22px;
-  height: 19px;
-}
-
-.footer {
-  width: 880px;
-  margin: 66px auto 0 auto;
-}
-@media screen and (max-width: 614px) {
-  .footer{
-    width: 282px;
-  }
-}
-@media screen and (min-width: 615px) and (max-width: 914px) {
-  .footer {
-    width: 581px;
-  }
-}
-
-.footer__info {
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 21.78px;
-  color: #545454
-}
-
-
-.overlay {
-  position: fixed;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  background-color: rgba(0, 0, 0, .5);
-  display: none;
-}
-.overlay_on {
-  display: flex;
-  justify-content: center;
-}
-
-.popup {
-  width: 430px;
-  height: 330px;
-  background-color: #FFF;
-  border-radius: 10px;
-  margin-top: 195px;
-  padding: 34px 36px 37px 36px;
-  box-sizing: border-box;
-  position: relative;
-}
-@media screen and (max-width: 914px) {
-  .popup {
-    width: 282px;
-    height: 322px;
-    margin-top: 123px;
-    padding: 25px 22px 25px 22px;
-  }
-}
-
-.popup__title {
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 29.05px;
-  color: #000;
-  margin: 0;
-}
-@media screen and (max-width: 914px) {
-  .popup__title {
-    font-size: 18px;
-    line-height: 21.78px;
-  }
-}
-/*Размеры импутов и стили ________________          */
-.popup__inp {
-  width: 100%;
-  height: 27;
-}
-.popup__inp_info_name {
-  margin: 54px 0 30px 0;
-}
-@media screen and (max-width: 914px) {
-  .popup__inp_info_name {
-    margin: 75px 0 30px 0;
-  }
-}
-
-.popup__inp_info_description {
-  margin-bottom: 48px;
-}
-@media screen and (max-width: 914px) {
-  .popup__inp_info_description  {
-    margin: 0 0 45px 0;
-  }
-}
-
-.popup__btn-save {
-  width: 100%;
-  height: 50px;
-  background-color: rgba(0, 0, 0, 1);
-  border-radius: 2px;
-  display: flex;
-  justify-content: center;
-}
-@media screen and (max-width: 914px) {
-  .popup__btn-save {
-    height: 46px;
-  }
-}
-.popup__btn-save:hover {
-  background-color: rgba(0, 0, 0, .8);
-  transition: .5s;
-  cursor: pointer;
-}
-.popup__btn-save-text {
-  font-weight: 400;
-  font-style: 18px;
-  line-height: 21.78px;
-}
-@media screen and (max-width: 914px) {
-  .popup__btn-save-text {
-    font-style: 14px;
-    line-height: 16.94px;
-  }
-}
-
-.popup__btn-close {
-  width: 32px;
-  height: 32px;
-  transform: rotate(45deg);
-  position: absolute;
-  right: -40px;
-  top: -40px;
-}
-@media screen and (max-width: 914px) {
-  .popup__btn-close {
-    width: 20px;
-    height: 20px;
-    right: 0;
-    top: -32px;
-  }
-}
-.popup__btn-close:hover {
-  opacity: .6;
-  transition: .5s;
-  cursor: pointer;
-}
