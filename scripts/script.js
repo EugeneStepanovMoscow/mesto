@@ -21,7 +21,7 @@ function overlayDeactivated() {
   overlay.classList.remove('overlay_on')
 };
 
-function infoSave () {
+function infoSave() {
   profilePersonName.textContent = inpPopupPersonName.value
   profilePersonDesc.textContent = inpPopupPersonDesc.value
   overlayDeactivated()
@@ -30,6 +30,18 @@ function infoSave () {
 btnEdit.addEventListener('click', overlayActivated);
 btnPopupClose.addEventListener('click', overlayDeactivated);
 btnPopupSave.addEventListener('click', infoSave);
+
+document.addEventListener('keydown', function(event) {
+  if (event.code === 'Escape') {
+    overlayDeactivated()
+  }
+});
+document.addEventListener('keydown', function(event) {
+  if (event.code === 'Enter') {
+    infoSave()
+  }
+});
+
 
 
 
