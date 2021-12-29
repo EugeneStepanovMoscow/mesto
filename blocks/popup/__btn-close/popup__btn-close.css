@@ -2,13 +2,11 @@
   width: 41.25px;
   height: 41.25px;
   position: absolute;
-  right: -40px;
-  top: -40px;
+  right: -49px;
+  top: -49px;
   background-image: url('../../../images/Plus.svg');
   transform: rotate(45deg);
-
 }
-
 
 @media screen and (max-width: 914px) {
   .popup__btn-close {

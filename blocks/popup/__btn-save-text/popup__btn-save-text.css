@@ -1,7 +1,9 @@
 .popup__btn-save-text {
+  margin: auto 0 auto 0;
   font-weight: 400;
   font-style: 18px;
   line-height: 21.78px;
+  color: #FFF;
 }
 @media screen and (max-width: 914px) {
   .popup__btn-save-text {
