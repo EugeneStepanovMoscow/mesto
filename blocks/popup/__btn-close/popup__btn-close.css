@@ -1,15 +1,19 @@
 .popup__btn-close {
-  width: 32px;
-  height: 32px;
-  transform: rotate(45deg);
+  width: 41.25px;
+  height: 41.25px;
   position: absolute;
   right: -40px;
   top: -40px;
+  background-image: url('../../../images/Plus.svg');
+  transform: rotate(45deg);
+
 }
+
+
 @media screen and (max-width: 914px) {
   .popup__btn-close {
-    width: 20px;
-    height: 20px;
+    width: 25.78px;
+    height: 25.78px;
     right: 0;
     top: -32px;
   }
