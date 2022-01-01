@@ -10,7 +10,7 @@ let inpPopupPersonName = document.querySelector('.popup__inp_info_name');
 let inpPopupPersonDesc = document.querySelector('.popup__inp_info_description')
 let btnPopupSave = document.querySelector('.popup__btn-save');
 
-/*Загрузка попапа*/
+// Загрузка попапа
 function overlayActivated() {
   overlay.classList.add('overlay_on')
   inpPopupPersonName.value = profilePersonName.textContent
@@ -41,6 +41,7 @@ document.addEventListener('keydown', function(event) {
     infoSave()
   }
 });
+
 
 
 
