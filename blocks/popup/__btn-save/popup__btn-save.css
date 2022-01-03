@@ -6,12 +6,16 @@
   border: 0;
   background-color: rgba(0, 0, 0, 1);
   border-radius: 2px;
-  display: flex;
-  justify-content: center;
+  font-weight: 400;
+  font-style: 18px;
+  line-height: 21.78px;
+  color: #FFF;
 }
 @media screen and (max-width: 914px) {
   .popup__btn-save {
     height: 46px;
+    font-style: 14px;
+    line-height: 16.94px;
   }
 }
 .popup__btn-save:hover {
