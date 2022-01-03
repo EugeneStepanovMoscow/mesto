@@ -3,10 +3,13 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 21.78px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 @media screen and (max-width: 914px) {
   .profile__person-description {
-    margin: 14px auto 36px auto;
+    margin: 9px auto 31px auto;
     font-size: 14px;
     line-height: 16.94px;
   }

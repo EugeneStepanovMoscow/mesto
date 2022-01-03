@@ -1,4 +1,7 @@
 .popup__btn-close {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
   width: 41.25px;
   height: 41.25px;
   position: absolute;

@@ -15,81 +15,84 @@
       <img class="header__logo" src="./images/Logo.svg" alt="Лого">
     </header>
     <main class="content">
-
       <section class="profile">
         <div class="profile__person">
           <img class="profile__image" src="./images/Cousto.jpg" alt="Кусто">
             <div class="profile__info">
               <h1 class="profile__person-name">Жак-Ив Кусто</h1>
-              <button class="profile__btn-edit">
+              <button class="profile__btn-edit" type="button">
                 <img class="profile__btn-edit-img" src="./images/Pen.svg" alt="Карандаш">
               </button>
               <p class="profile__person-description">Исследователь океана</p>
             </div>
         </div>
-        <button class="profile__btn-add">
+
+        <button class="profile__btn-add" type="button">
           <img class="profile__btn-add-img" src="./images/Plus.svg" alt="Плюс">
         </button>
       </section>
-
       <section class="places">
-        <div class="place">
-          <img class="place__image" src="./images/Elbrus.jpg" alt="Ельбрус">
-          <div class="place__title">
-            <h2 class="place__name">Карачаево-Ч...</h2>
-            <img class="place__like" src="./images/Heart.svg" alt="Лайк">
-          </div>
-        </div>
-        <div class="place">
-          <img class="place__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
-          <div class="place__title">
-            <h2 class="place__name">Карачаевск</h2>
-            <img class="place__like" src="./images/Heart.svg" alt="Лайк">
-          </div>
-        </div>
-        <div class="place">
-          <img class="place__image" src="./images/Elbrus2.jpg" alt="Ельбрус">
-          <div class="place__title">
-            <h2 class="place__name">Гора Эльбрус</h2>
-            <img class="place__like" src="./images/Heart.svg" alt="Лайк">
-          </div>
-        </div>
-        <div class="place">
-          <img class="place__image" src="./images/Dombai2.jpg" alt="Домбай">
-          <div class="place__title">
-            <h2 class="place__name">Домбай</h2>
-            <img class="place__like" src="./images/Heart.svg" alt="Лайк">
-          </div>
-        </div>
-        <div class="place">
-          <img class="place__image" src="./images/Elbrus.jpg" alt="Ельбрус">
-          <div class="place__title">
-            <h2 class="place__name">Гора Эльбрус</h2>
-            <img class="place__like" src="./images/Heart.svg" alt="Лайк">
-          </div>
-        </div>
-        <div class="place">
-          <img class="place__image" src="./images/Dombai.jpg" alt="Домбай">
-          <div class="place__title">
-            <h2 class="place__name">Домбай</h2>
-            <img class="place__like" src="./images/Heart.svg" alt="Лайк">
-          </div>
-        </div>
+        <ul class="places__table">
+          <li class="place">
+            <img class="place__image" src="./images/Elbrus.jpg" alt="Ельбрус">
+            <div class="place__title">
+             <h2 class="place__name">Карачаево-Черкесия</h2>
+             <button class="place__btn-like" type="button"></button>
+            </div>
+          </li>
+          <li class="place">
+           <img class="place__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
+           <div class="place__title">
+              <h2 class="place__name">Карачаевск</h2>
+             <button class="place__btn-like" type="button"></button>
+            </div>
+          </li>
+          <li class="place">
+            <img class="place__image" src="./images/Elbrus2.jpg" alt="Ельбрус">
+            <div class="place__title">
+             <h2 class="place__name">Гора Эльбрус</h2>
+             <button class="place__btn-like" type="button"></button>
+            </div>
+          </li>
+          <li class="place">
+            <img class="place__image" src="./images/Dombai2.jpg" alt="Домбай">
+            <div class="place__title">
+             <h2 class="place__name">Домбай</h2>
+             <button class="place__btn-like" type="button"></button>
+            </div>
+          </li>
+          <li class="place">
+            <img class="place__image" src="./images/Elbrus.jpg" alt="Ельбрус">
+            <div class="place__title">
+              <h2 class="place__name">Гора Эльбрус</h2>
+              <button class="place__btn-like" type="button"></button>
+            </div>
+          </li>
+          <li class="place">
+            <img class="place__image" src="./images/Dombai.jpg" alt="Домбай">
+            <div class="place__title">
+              <h2 class="place__name">Домбай</h2>
+              <button class="place__btn-like" type="button"></button>
+            </div>
+          </li>
+        </ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__info">© 2020 Mesto Russia</p>
     </footer>
-    <section class="overlay">
-      <div class="popup">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__inp popup__inp_info_name" name="name" value="Type here">
-        <input class="popup__inp popup__inp_info_description" name="description" value="Type here">
-        <button class="popup__btn-save">
+    <section class="overlay overlay_on">
+      <form class="popup" name="popup-form">
+        <fieldset class="popup__fieldset">
+          <legend class="popup__title">Редактировать профиль</legend>
+          <input class="popup__inp" name="name" type="text" value="Type here">
+          <input class="popup__inp" name="description" type="text" value="Type here">
+        </fieldset>
+        <button class="popup__btn-save" type="button">
           <p class="popup__btn-save-text">Сохранить</p>
         </button>
-        <img class="popup__btn-close" src="./images/Plus.svg" alt="Плюс">
-      </div>
+        <button class="popup__btn-close" type="button"></button>
+      </form>
     </section>
   </div>
 <script src="./scripts/script.js"></script>
