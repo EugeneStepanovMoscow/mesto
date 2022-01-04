@@ -2,17 +2,15 @@
   width: 880px;
   min-height: 74px;
   margin: 0 auto;
-  /* border-bottom: 1px solid rgba(54, 54, 54, .7);
-  Не совсем понятно какую запись использовать.
-  При использовании RGBA цвет сильно отличается от макета.
-  Конвертер HEX 2 RGBA выдает значения RBG(84, 84, 84)*/
   border-bottom: 1px solid #545454B3;
   box-sizing: border-box;
+
 }
 @media screen and (max-width: 614px) {
   .header{
-    width: 282px;
+    min-width: 282px;
     min-height: 56px;
+    margin: 0;
   }
 }
 @media screen and (min-width: 615px) and (max-width: 914px) {

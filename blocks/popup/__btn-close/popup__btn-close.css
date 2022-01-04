@@ -5,8 +5,8 @@
   width: 41.25px;
   height: 41.25px;
   position: absolute;
-  right: -49px;
-  top: -49px;
+  right: -44px;
+  top: -44px;
   background-image: url('../../../images/Plus.svg');
   transform: rotate(45deg);
 }
@@ -15,8 +15,8 @@
   .popup__btn-close {
     width: 25.78px;
     height: 25.78px;
-    right: 0;
-    top: -32px;
+    right: -3px;
+    top: -40px;
   }
 }
 .popup__btn-close:hover {
