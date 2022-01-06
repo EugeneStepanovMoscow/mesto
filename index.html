@@ -26,7 +26,6 @@
               <p class="profile__person-description">Исследователь океана</p>
             </div>
         </div>
-
         <button class="profile__btn-add" type="button">
           <img class="profile__btn-add-img" src="./images/Plus.svg" alt="Плюс">
         </button>
@@ -42,6 +41,10 @@
     </footer>
     <section class="overlay">
       <div class="popup">
+        <figure class = "popup__figure">
+          <img class="popup__image" src="" alt="">
+          <figcaption class = "popup__figcaption">Место</figcaption>
+        </figure>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" name="popup-form">
           <fieldset class="popup__fieldset">
@@ -57,7 +60,10 @@
 
   <template id="place-template">
     <li class="place">
-      <img class="place__image" src="" alt="">
+      <button class="place__btn-view">
+        <img class="place__image" src="" alt="">
+      </button>
+      <!-- <img class="place__image" src="" alt=""> -->
       <button class="place__btn-delit" type="button"></button>
       <div class="place__title">
        <h2 class="place__name"></h2>
@@ -65,7 +71,6 @@
       </div>
     </li>
   </template>
-
 
 <script src="./scripts/script.js"></script>
 </body>

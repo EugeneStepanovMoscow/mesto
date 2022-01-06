@@ -1,5 +1,5 @@
 .popup {
-  width: 430px;
+  max-width: 430px;
   min-height: 330px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, .15);
   background-color: #FFF;
@@ -15,6 +15,3 @@
     padding: 26px 22px 25px 22px;
   }
 }
-
-
-
