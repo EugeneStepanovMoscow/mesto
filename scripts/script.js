@@ -4,6 +4,9 @@ let profilePersonName = document.querySelector('.profile__person-name');
 let profilePersonDesc = document.querySelector('.profile__person-description');
 let btnEdit = document.querySelector('.profile__btn-edit');
 let btnPlaceAdd = document.querySelector('.profile__btn-add')
+// let btnPlaceDel = document.querySelector('.place__btn-delit')
+// let btnPlaceLke = document.querySelector('.place__btn-like')
+
 
 let popupTitle = document.querySelector('.popup__title');
 let formElement = document.querySelector('.popup__form');
@@ -59,8 +62,8 @@ function popupPlaceAdd() {
 };
 
 
-//___________________________________Функция добавления новых карточек
-function addPlace(placeName, placeImage) {
+//___________________________________Функция обработки карточек
+function placeWork(placeName, placeImage) {
   const placeTemplate = document.querySelector('#place-template').content
   const placeNew = placeTemplate.querySelector('.place').cloneNode(true)
 
@@ -68,20 +71,33 @@ function addPlace(placeName, placeImage) {
   placeNew.querySelector('.place__image').src = placeImage
   placeNew.querySelector('.place__image').alt = placeName
 
+  // _____________Удаление карточек
+  placeNew.querySelector('.place__btn-delit').addEventListener('click', function() {
+    placeNew.remove()
+  })
+  // _____________Статус Like
+  placeNew.querySelector('.place__btn-like').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('place__btn-like_active')
+  })
+
+
   // songElement.querySelector('.song__like').addEventListener('click', function(evt) {
   //   evt.target.classList.toggle('song__like_active')
   //   console.log(evt.target.classList)
   // })
-
   placesTable.prepend(placeNew)
 }
-//___________________________________Функция загрузки базовых карточек
-function placesInit() {
-  for (i = 3; i < initialPlaces.length; i++) {
-    addPlace(initialPlaces[i].name, initialPlaces[i].link)
-  }
+function placeDelit() {
+
 }
 
+
+//___________________________________Функция загрузки базовых карточек
+function placesInit() {
+  for (i = 0; i < initialPlaces.length; i++) {
+    placeWork(initialPlaces[i].name, initialPlaces[i].link)
+  }
+}
 
 function overlayDeactivated() {
   overlay.classList.remove('overlay_on')
@@ -91,8 +107,8 @@ function overlayDeactivated() {
 function infoSave(evt) {
   evt.preventDefault()
   if (popupTitle.textContent === 'Новое место') {  //на форме добавления места//
-    addPlace(initialPlaces[4].name, initialPlaces[4].link)  //удалить//
-    // addPlace(inpPopupPersonName.value, inpPopupPersonDesc.value)   раскомитить//
+    placeWork(inpPopupPersonName.value, initialPlaces[4].link)  //удалить//
+    // placeWork(inpPopupPersonName.value, inpPopupPersonDesc.value)   раскомитить//
     overlayDeactivated()
   }
   else {
@@ -102,12 +118,11 @@ function infoSave(evt) {
   }
 };
 
-//загрузка базовых карточек
+//____________________________________загрузка базовых карточек
 placesInit()
 
 btnEdit.addEventListener('click', popupPersonEdit);
 btnPlaceAdd.addEventListener('click', popupPlaceAdd);
-
 btnPopupClose.addEventListener('click', overlayDeactivated); //попробовать вписать функцию короче в тело слушателя//
 formElement.addEventListener('submit', infoSave);
 
