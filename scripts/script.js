@@ -91,7 +91,8 @@ function overlayDeactivated() {
 function infoSave(evt) {
   evt.preventDefault()
   if (popupTitle.textContent === 'Новое место') {  //на форме добавления места//
-    addPlace(inpPopupPersonName.value, inpPopupPersonDesc.value)
+    addPlace(initialPlaces[4].name, initialPlaces[4].link)  //удалить//
+    // addPlace(inpPopupPersonName.value, inpPopupPersonDesc.value)   раскомитить//
     overlayDeactivated()
   }
   else {
