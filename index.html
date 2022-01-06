@@ -33,48 +33,7 @@
       </section>
       <section class="places">
         <ul class="places__table">
-          <li class="place">
-            <img class="place__image" src="./images/Elbrus.jpg" alt="Ельбрус">
-            <div class="place__title">
-             <h2 class="place__name">Карачаево-Черкесия</h2>
-             <button class="place__btn-like" type="button"></button>
-            </div>
-          </li>
-          <li class="place">
-           <img class="place__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
-           <div class="place__title">
-              <h2 class="place__name">Карачаевск</h2>
-             <button class="place__btn-like" type="button"></button>
-            </div>
-          </li>
-          <li class="place">
-            <img class="place__image" src="./images/Elbrus2.jpg" alt="Ельбрус">
-            <div class="place__title">
-             <h2 class="place__name">Гора Эльбрус</h2>
-             <button class="place__btn-like" type="button"></button>
-            </div>
-          </li>
-          <li class="place">
-            <img class="place__image" src="./images/Dombai2.jpg" alt="Домбай">
-            <div class="place__title">
-             <h2 class="place__name">Домбай</h2>
-             <button class="place__btn-like" type="button"></button>
-            </div>
-          </li>
-          <li class="place">
-            <img class="place__image" src="./images/Elbrus.jpg" alt="Ельбрус">
-            <div class="place__title">
-              <h2 class="place__name">Гора Эльбрус</h2>
-              <button class="place__btn-like" type="button"></button>
-            </div>
-          </li>
-          <li class="place">
-            <img class="place__image" src="./images/Dombai.jpg" alt="Домбай">
-            <div class="place__title">
-              <h2 class="place__name">Домбай</h2>
-              <button class="place__btn-like" type="button"></button>
-            </div>
-          </li>
+          <!-- Контейнер для карточек -->
         </ul>
       </section>
     </main>
@@ -95,6 +54,18 @@
       </div>
     </section>
   </div>
+
+  <template id="place-template">
+    <li class="place">
+      <img class="place__image" src="" alt="">
+      <div class="place__title">
+       <h2 class="place__name"></h2>
+       <button class="place__btn-like" type="button"></button>
+      </div>
+    </li>
+  </template>
+
+
 <script src="./scripts/script.js"></script>
 </body>
 </html>
