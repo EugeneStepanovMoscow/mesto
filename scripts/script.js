@@ -92,9 +92,9 @@ function creatingStartingCards() {
     addCard(createCard(initialPlaces[i].name, initialPlaces[i].link))
   }
 };
-// ___________________________________Функция отработки submit на попапе-
+// ___________________________________Функция отработки submit на попапе добавления карточки
 function submitPlaceAdd() {
-  addCard(createCard(inpPopupProfileEditName.value, inpPopupProfileEditDesc.value))
+  addCard(createCard(inpPopupPlaceAddPlaceName.value, inpPopupPlaceAddPlaceImg.value))
   closePopup(popupPlaceAdd)
 };
 //___________________________________Функция отработки submit на попапе редактирования профиля
