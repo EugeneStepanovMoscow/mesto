@@ -1,0 +1,15 @@
+.popup__container_type_place-view {
+  max-width: 75vw;
+  height: 75vh;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, .15);
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 0;
+  padding: 0;
+}
+@media screen and (max-width: 914px) {
+  .popup__container_type_place-view {
+    max-width: 75vw;
+    max-height: 75vh;
+    padding: 0;
+  }
+}

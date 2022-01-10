@@ -39,29 +39,52 @@
     <footer class="footer">
       <p class="footer__info">© 2020 Mesto Russia</p>
     </footer>
-    <section class="overlay">
-      <div class="popup">
-        <figure class = "popup__figure">
-          <img class="popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз">
-          <figcaption class = "popup__figcaption">Место</figcaption>
-        </figure>
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="popup-form">
-          <fieldset class="popup__fieldset">
-            <input class="popup__inp" name="name" type="text" value="Type here">
-            <input class="popup__inp" name="description" type="text" value="Type here">
-          </fieldset>
-          <button class="popup__btn-save" type="submit">Сохранить</button>
-        </form>
-        <button class="popup__btn-close" type="button"></button>
+
+    <section class="popups">
+<!--Редактирование профиля -->
+      <div class="popup" id="popupProfileEdit">
+        <div class="popup__container">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="popup__form" name="popupProfileEditForm" id="popupProfileEditForm">
+            <fieldset class="popup__fieldset">
+              <input class="popup__inp" name="name" type="text" value="Type here">
+              <input class="popup__inp" name="description" type="text" value="Type here">
+            <button class="popup__btn-save" type="submit">Сохранить</button>
+            </fieldset>
+          </form>
+          <button class="popup__btn-close" id="popupProfileEditBtnClose" type="button"></button>
+        </div>
+      </div>
+<!--Добавление карточки -->
+      <div class="popup" id="popupPlaceAdd">
+        <div class="popup__container">
+          <h2 class="popup__title">Новое место</h2>
+          <form class="popup__form" name="popupPlaceAddForm" id="popupPlaceAddForm">
+            <fieldset class="popup__fieldset">
+              <input class="popup__inp" name="name" type="text" value="Название">
+              <input class="popup__inp" name="description" type="text" value="Ссылка на картинку">
+            <button class="popup__btn-save" type="submit">Создать</button>
+            </fieldset>
+          </form>
+          <button class="popup__btn-close" id="popupAddPlaceBtnClose" type="button"></button>
+        </div>
+      </div>
+<!--Просмотр карточки -->
+      <div class="popup" id="popupPlaceView">
+        <div class="popup__container popup__container_type_place-view">
+          <figure class="popup__figure">
+            <img class="popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз">
+            <figcaption class="popup__figcaption">Место</figcaption>
+          </figure>
+          <button class="popup__btn-close" id="popupPlaceViewBtnClose" type="button"></button>
+        </div>
       </div>
     </section>
   </div>
-
   <template id="place-template">
     <li class="place">
       <button class="place__btn-view" type="button">
-        <img class="place__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз">
+        <img class="place__image" src="" alt="">
       </button>
       <button class="place__btn-delit" type="button"></button>
       <div class="place__title">
@@ -70,7 +93,6 @@
       </div>
     </li>
   </template>
-
 <script src="./scripts/script.js"></script>
 </body>
 </html>

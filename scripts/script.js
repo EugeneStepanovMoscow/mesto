@@ -1,21 +1,26 @@
-let profilePersonName = document.querySelector('.profile__person-name');
-let profilePersonDesc = document.querySelector('.profile__person-description');
-let btnEdit = document.querySelector('.profile__btn-edit');
-let btnPlaceAdd = document.querySelector('.profile__btn-add')
+const profilePersonName = document.querySelector('.profile__person-name');
+const profilePersonDesc = document.querySelector('.profile__person-description');
 
-let overlay = document.querySelector('.overlay');
-let popup = document.querySelector('.popup')
-let popupFig = popup.querySelector('.popup__figure')
-let popupFigCap = popupFig.querySelector('.popup__figcaption')
-let popupImg = popupFig.querySelector('.popup__image')
-let popupTitle = document.querySelector('.popup__title');
-let formElement = document.querySelector('.popup__form');
-let inpPopupPersonName = document.querySelector('input[name="name"]');
-let inpPopupPersonDesc = document.querySelector('input[name="description"]');
-let btnPopupSave = document.querySelector('.popup__btn-save');
-let btnPopupClose = document.querySelector('.popup__btn-close');
+const btnProfileEdit = document.querySelector('.profile__btn-edit');
+const btnPlaceAdd = document.querySelector('.profile__btn-add')
 
-let placesTable = document.querySelector('.places__table')
+const popups = document.querySelector('.popups')
+const popupProfileEdit = popups.querySelector('#popupProfileEdit')
+const btnClosePopupProfileEdit = popups.querySelector('#popupProfileEditBtnClose');
+const frmPopupProfileEdit = document.querySelector('#popupProfileEditForm');
+const inpPopupProfileEditName = frmPopupProfileEdit.querySelector('input[name="name"]');
+const inpPopupProfileEditDesc = frmPopupProfileEdit.querySelector('input[name="description"]');
+
+const popupPlaceAdd = popups.querySelector('#popupPlaceAdd')
+const btnClosePopupAdd = popups.querySelector('#popupAddPlaceBtnClose');
+const frmPopupPlaceAdd = document.querySelector('#popupPlaceAddForm');
+const inpPopupPlaceAddPlaceName = frmPopupPlaceAdd.querySelector('input[name="name"]');
+const inpPopupPlaceAddPlaceImg = frmPopupPlaceAdd.querySelector('input[name="description"]');
+
+const popupPlaceView = popups.querySelector('#popupPlaceView')
+const btnClosePopupPlaceView = popups.querySelector('#popupPlaceViewBtnClose');
+
+const placesTable = document.querySelector('.places__table')
 
 const initialPlaces = [
   {
@@ -43,97 +48,93 @@ const initialPlaces = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-//___________________________________Функция изменение попапа редактирования профиля
-function popupPersonEdit() {
-  popupViewReset()
-  overlay.classList.add('overlay_on')
-  popupTitle.textContent = 'Редактирование профиля'
-  btnPopupSave.textContent = 'Сохранить'
-  inpPopupPersonName.value = profilePersonName.textContent
-  inpPopupPersonDesc.value = profilePersonDesc.textContent
-};
-//___________________________________Функция изменение попапа добавления карточки места
-function popupPlaceAdd() {
-  popupViewReset()
-  overlay.classList.add('overlay_on')
-  popupTitle.textContent = 'Новое место'
-  btnPopupSave.textContent = 'Создать'
-  inpPopupPersonName.value = 'Название'
-  inpPopupPersonDesc.value = 'Ссылка на картинку'
-};
-
-//___________________________________Функция обработки карточек
-function placeWork(placeName, placeImage) {
+//___________________________________Функция открытия попапа-
+function openPopup(popupName) {
+  popupName.classList.add('popup_opened')
+}
+//___________________________________Функция закрытия попапа-
+function closePopup(popupName) {
+  popupName.classList.remove('popup_opened')
+}
+//___________________________________Функция создания карточеки
+function createCard(placeName, placeImage) {
   const placeTemplate = document.querySelector('#place-template').content
-  const placeNew = placeTemplate.querySelector('.place').cloneNode(true)
+  const newPlace = placeTemplate.querySelector('.place').cloneNode(true)
+  const cardImage = newPlace.querySelector('.place__image')
+  const cardName = newPlace.querySelector('.place__name')
 
-  placeNew.querySelector('.place__name').textContent = placeName
-  placeNew.querySelector('.place__image').src = placeImage
-  placeNew.querySelector('.place__image').alt = placeName
-
-  // _____________Удаление карточек
-  placeNew.querySelector('.place__btn-delit').addEventListener('click', function() {
-    placeNew.remove()
+  cardName.textContent = placeName
+  cardImage.src = placeImage
+  cardImage.alt = placeName
+  // _____________слушатель удаление карточек
+  newPlace.querySelector('.place__btn-delit').addEventListener('click', function() {
+    newPlace.remove()
   })
-  // _____________Статус Like
-  placeNew.querySelector('.place__btn-like').addEventListener('click', function(evt) {
+  // _____________Слушатель статуса Like
+  newPlace.querySelector('.place__btn-like').addEventListener('click', function(evt) {
     evt.target.classList.toggle('place__btn-like_active')
   })
-  // _____________Попап просмотра
-  placeNew.querySelector('.place__btn-view').addEventListener('click', function() {
-    popupFig.hidden = false
-    popupTitle.hidden = true
-    formElement.hidden = true
-    popupImg.src = placeImage
-    popupFigCap.textContent = placeName
-    popup.classList.add('popup_view')
-    overlay.classList.add('overlay_on')
+  // _____________слушатель просмотра картинки
+  newPlace.querySelector('.place__btn-view').addEventListener('click', function() {
+    openPopup(popupPlaceView)
+    popupPlaceView.querySelector('.popup__image').src = placeImage
+    popupPlaceView.querySelector('.popup__figcaption').textContent = placeName
   })
-  placesTable.prepend(placeNew)
-};
-
-//___________________________________Функция загрузки базовых карточек
-function placesInit() {
-  for (i = 0; i < initialPlaces.length; i++) {
-    placeWork(initialPlaces[i].name, initialPlaces[i].link)
-  }
-};
-
-function overlayDeactivated() {
-  overlay.classList.remove('overlay_on')
-};
-
-//___________________________________Функция сброса стилей попапа после view
-function popupViewReset() {
-  popup.classList.remove('popup_view')
-  popupFig.hidden = true
-  popupTitle.hidden = false
-  formElement.hidden = false
+  return newPlace
 }
-
-//___________________________________Функция отработки submit на попапе-
-function infoSave(evt) {
-  evt.preventDefault()
-  if (popupTitle.textContent === 'Новое место') {                       //на форме добавления места//
-    placeWork(inpPopupPersonName.value, inpPopupPersonDesc.value)
-    overlayDeactivated()
-  }
-  else {                                                                //на форме редактирования профиля//
-    profilePersonName.textContent = inpPopupPersonName.value
-    profilePersonDesc.textContent = inpPopupPersonDesc.value
-    overlayDeactivated()
+//___________________________________Функция добавления карточеки в DOM
+function addCard(itemCard) {
+  placesTable.prepend(itemCard)
+};
+//___________________________________Функция создания базовых карточек
+function creatingStartingCards() {
+  for (i = 0; i < initialPlaces.length; i++) {
+    addCard(createCard(initialPlaces[i].name, initialPlaces[i].link))
   }
 };
-
+// ___________________________________Функция отработки submit на попапе-
+function submitPlaceAdd() {
+  addCard(createCard(inpPopupProfileEditName.value, inpPopupProfileEditDesc.value))
+  closePopup(popupPlaceAdd)
+};
+//___________________________________Функция отработки submit на попапе редактирования профиля
+function submitProfileEdit() {
+  profilePersonName.textContent = inpPopupProfileEditName.value
+  profilePersonDesc.textContent = inpPopupProfileEditDesc.value
+  closePopup(popupProfileEdit)
+};
 //____________________________________загрузка базовых карточек + слушатели событий
-placesInit()
-btnEdit.addEventListener('click', popupPersonEdit);
-btnPlaceAdd.addEventListener('click', popupPlaceAdd);
-btnPopupClose.addEventListener('click', overlayDeactivated);
-formElement.addEventListener('submit', infoSave);
 
-
-
-
-
-
+creatingStartingCards();
+//_____________________Редактирование профиля
+btnProfileEdit.addEventListener('click', function() {
+  inpPopupProfileEditName.value = profilePersonName.textContent
+  inpPopupProfileEditDesc.value = profilePersonDesc.textContent
+  openPopup(popupProfileEdit)
+});
+//_____________________Добавление карточки
+btnPlaceAdd.addEventListener('click', function() {
+  openPopup(popupPlaceAdd)
+});
+//_____________________закрытие попапа редактирования профиля
+btnClosePopupProfileEdit.addEventListener('click', function() {
+  closePopup(popupProfileEdit)
+});
+//_____________________закрытие попапа добавления карточки
+btnClosePopupAdd.addEventListener('click', function() {
+  closePopup(popupPlaceAdd)
+});
+//_____________________закрытие попапа просмотра картинок
+btnClosePopupPlaceView.addEventListener('click', function() {
+  closePopup(popupPlaceView)
+});
+//_____________________сабмит формы добавления карточки
+frmPopupPlaceAdd.addEventListener('submit', function(evt) {
+  evt.preventDefault()
+  submitPlaceAdd()
+});
+//_____________________сабмит формы редактирования профиля
+frmPopupProfileEdit.addEventListener('submit', function(evt) {
+  evt.preventDefault()
+  submitProfileEdit()
+});

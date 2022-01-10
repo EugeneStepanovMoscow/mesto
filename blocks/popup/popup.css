@@ -1,17 +1,15 @@
 .popup {
-  max-width: 430px;
-  min-height: 330px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, .15);
-  background-color: #FFF;
-  border-radius: 10px;
-  padding: 34px 36px 37px 36px;
-  box-sizing: border-box;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(0, 0, 0, .5);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .5s, opacity 0.5s linear;
 }
-@media screen and (max-width: 914px) {
-  .popup {
-    width: 282px;
-    min-height: 322px;
-    padding: 26px 22px 25px 22px;
-  }
-}
+

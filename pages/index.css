@@ -34,10 +34,11 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__info/footer__info.css);
 
-@import url(../blocks/overlay/overlay.css);
-@import url(../blocks/overlay/_on/overlay_on.css);
-
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+
+@import url(../blocks/popup/popup__container.css);
+@import url(../blocks/popup/popup__container_type_place-view.css);
 @import url(../blocks/popup/_view/popup_view.css);
 @import url(../blocks/popup/__figure/popup__figure.css);
 @import url(../blocks/popup/__figcaption/popup__figcaption.css);
