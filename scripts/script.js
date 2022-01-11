@@ -17,8 +17,11 @@ const frmPopupPlaceAdd = document.querySelector('#popupPlaceAddForm');
 const inpPopupPlaceAddPlaceName = frmPopupPlaceAdd.querySelector('input[name="name"]');
 const inpPopupPlaceAddPlaceImg = frmPopupPlaceAdd.querySelector('input[name="description"]');
 
-const popupPlaceView = popups.querySelector('#popupPlaceView')
+const popupPlaceView = popups.querySelector('#popupPlaceView');
 const btnClosePopupPlaceView = popups.querySelector('#popupPlaceViewBtnClose');
+const imgPopupPlaceView = popupPlaceView.querySelector('.popup__image');
+const figcapPopupPlaceView = popupPlaceView.querySelector('.popup__figcaption');
+
 
 const placesTable = document.querySelector('.places__table')
 
@@ -73,15 +76,16 @@ function createCard(placeName, placeImage) {
   // _____________Слушатель статуса Like
   newPlace.querySelector('.place__btn-like').addEventListener('click', function(evt) {
     evt.target.classList.toggle('place__btn-like_active')
-  })
+  });
   // _____________слушатель просмотра картинки
   newPlace.querySelector('.place__btn-view').addEventListener('click', function() {
     openPopup(popupPlaceView)
-    popupPlaceView.querySelector('.popup__image').src = placeImage
-    popupPlaceView.querySelector('.popup__figcaption').textContent = placeName
+    imgPopupPlaceView.src = placeImage
+    imgPopupPlaceView.textContent = placeName
+    figcapPopupPlaceView.textContent = placeName
   })
   return newPlace
-}
+};
 //___________________________________Функция добавления карточеки в DOM
 function addCard(itemCard) {
   placesTable.prepend(itemCard)
@@ -96,6 +100,8 @@ function creatingStartingCards() {
 function submitPlaceAdd() {
   addCard(createCard(inpPopupPlaceAddPlaceName.value, inpPopupPlaceAddPlaceImg.value))
   closePopup(popupPlaceAdd)
+  inpPopupPlaceAddPlaceName.value = ''
+  inpPopupPlaceAddPlaceImg.value = ''
 };
 //___________________________________Функция отработки submit на попапе редактирования профиля
 function submitProfileEdit() {
