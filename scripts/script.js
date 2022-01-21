@@ -22,8 +22,9 @@ const btnClosePopupPlaceView = popups.querySelector('#popupPlaceViewBtnClose');
 const imgPopupPlaceView = popupPlaceView.querySelector('.popup__image');
 const figcapPopupPlaceView = popupPlaceView.querySelector('.popup__figcaption');
 
-
 const placesTable = document.querySelector('.places__table')
+
+let openedPopupName = ''
 
 const initialPlaces = [
   {
@@ -51,14 +52,27 @@ const initialPlaces = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+//___________________________________Функция закрытия попапа по Esc или Click-
+function closePopupFrom (evt) {
+  if (evt.target.classList.contains('popup') || evt.key === 'Escape') {
+    closePopup(openedPopupName)
+  }
+}
 //___________________________________Функция открытия попапа-
 function openPopup(popupName) {
+  openedPopupName = popupName
   popupName.classList.add('popup_opened')
+  document.addEventListener('keydown', closePopupFrom)   //слушатель закрытия по Esp
+  popupName.addEventListener('click', closePopupFrom)  //слушатель закрытия по click
 }
 //___________________________________Функция закрытия попапа-
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened')
+  document.removeEventListener('keydown', closePopupFrom)  //удаление слушателя закрития по Esp
+  popupName.removeEventListener('click', closePopupFrom) //удаление слушателя закрития по click
 }
+
 //___________________________________Функция создания карточеки
 function createCard(placeName, placeImage) {
   const placeTemplate = document.querySelector('#place-template').content
@@ -69,14 +83,11 @@ function createCard(placeName, placeImage) {
   cardName.textContent = placeName
   cardImage.src = placeImage
   cardImage.alt = placeName
+
   // _____________слушатель удаление карточек
-  newPlace.querySelector('.place__btn-delit').addEventListener('click', function() {
-    newPlace.remove()
-  })
+  newPlace.querySelector('.place__btn-delit').addEventListener('click', () => newPlace.remove())
   // _____________Слушатель статуса Like
-  newPlace.querySelector('.place__btn-like').addEventListener('click', function(evt) {
-    evt.target.classList.toggle('place__btn-like_active')
-  });
+  newPlace.querySelector('.place__btn-like').addEventListener('click', evt => evt.target.classList.toggle('place__btn-like_active'));
   // _____________слушатель просмотра картинки
   newPlace.querySelector('.place__btn-view').addEventListener('click', function() {
     openPopup(popupPlaceView)
@@ -90,12 +101,11 @@ function createCard(placeName, placeImage) {
 function addCard(itemCard) {
   placesTable.prepend(itemCard)
 };
-//___________________________________Функция создания базовых карточек
-function creatingStartingCards() {
-  for (i = 0; i < initialPlaces.length; i++) {
-    addCard(createCard(initialPlaces[i].name, initialPlaces[i].link))
-  }
-};
+
+function creatingStartingCards(cardArr) {
+  cardArr.forEach(element => addCard(createCard(element.name, element.link)))
+}
+
 // ___________________________________Функция отработки submit на попапе добавления карточки
 function submitPlaceAdd() {
   addCard(createCard(inpPopupPlaceAddPlaceName.value, inpPopupPlaceAddPlaceImg.value))
@@ -110,30 +120,21 @@ function submitProfileEdit() {
   closePopup(popupProfileEdit)
 };
 //____________________________________загрузка базовых карточек + слушатели событий
-
-creatingStartingCards();
-//_____________________Редактирование профиля
+creatingStartingCards(initialPlaces);
+//____________________________________Открытие попапа Редактирование профиля по кнопке
 btnProfileEdit.addEventListener('click', function() {
   inpPopupProfileEditName.value = profilePersonName.textContent
   inpPopupProfileEditDesc.value = profilePersonDesc.textContent
   openPopup(popupProfileEdit)
 });
-//_____________________Добавление карточки
-btnPlaceAdd.addEventListener('click', function() {
-  openPopup(popupPlaceAdd)
-});
+//____________________________________Открытие попапа Добавление карточки по кнопке
+btnPlaceAdd.addEventListener('click', () => {openPopup(popupPlaceAdd)});
 //_____________________закрытие попапа редактирования профиля
-btnClosePopupProfileEdit.addEventListener('click', function() {
-  closePopup(popupProfileEdit)
-});
+btnClosePopupProfileEdit.addEventListener('click', () => {closePopup(popupProfileEdit)});
 //_____________________закрытие попапа добавления карточки
-btnClosePopupAdd.addEventListener('click', function() {
-  closePopup(popupPlaceAdd)
-});
+btnClosePopupAdd.addEventListener('click', () => {closePopup(popupPlaceAdd)});
 //_____________________закрытие попапа просмотра картинок
-btnClosePopupPlaceView.addEventListener('click', function() {
-  closePopup(popupPlaceView)
-});
+btnClosePopupPlaceView.addEventListener('click', () => {closePopup(popupPlaceView)});
 //_____________________сабмит формы добавления карточки
 frmPopupPlaceAdd.addEventListener('submit', function(evt) {
   evt.preventDefault()
@@ -144,3 +145,4 @@ frmPopupProfileEdit.addEventListener('submit', function(evt) {
   evt.preventDefault()
   submitProfileEdit()
 });
+
