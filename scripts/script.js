@@ -73,6 +73,12 @@ function closePopup(popupName) {
   popupName.removeEventListener('click', closePopupFrom) //удаление слушателя закрития по click
 }
 
+placesTable.addEventListener('click', (evt) => {
+  console.log(evt.target)
+})
+
+
+
 //___________________________________Функция создания карточеки
 function createCard(placeName, placeImage) {
   const placeTemplate = document.querySelector('#place-template').content
