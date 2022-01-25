@@ -45,11 +45,13 @@
       <div class="popup" id="popupProfileEdit">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="popupProfileEditForm" id="popupProfileEditForm">
+          <form class="popup__form" name="popupProfileEditForm" id="popupProfileEditForm" novalidate>
             <fieldset class="popup__fieldset">
-              <input class="popup__inp" name="name" type="text" value="" placeholder="Введите имя" >
-              <input class="popup__inp" name="description" type="text" value="" placeholder="Укажите профессию">
-            <button class="popup__btn-save" type="submit">Сохранить</button>
+              <input class="popup__inp" name="name" type="text" value="" placeholder="Введите имя" minlength="2" maxlength="40" required>
+              <span class="popup__inp-errmsg" id="inperr-name"></span>
+              <input class="popup__inp" name="description" type="text" value="" placeholder="Укажите профессию" minlength="2" maxlength="200" required>
+              <span class="popup__inp-errmsg" id="inperr-description"></span>
+              <button class="popup__btn-save" type="submit">Сохранить</button>
             </fieldset>
           </form>
           <button class="popup__btn-close" id="popupProfileEditBtnClose" type="button"></button>
@@ -59,11 +61,13 @@
       <div class="popup" id="popupPlaceAdd">
         <div class="popup__container">
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form" name="popupPlaceAddForm" id="popupPlaceAddForm">
+          <form class="popup__form" name="popupPlaceAddForm" id="popupPlaceAddForm" novalidate>
             <fieldset class="popup__fieldset">
-              <input class="popup__inp" name="name" type="text" value="" placeholder="Название">
-              <input class="popup__inp" name="description" type="text" value="" placeholder="Ссылка на картинку">
-            <button class="popup__btn-save" type="submit">Создать</button>
+              <input class="popup__inp" name="name" type="text" value="" placeholder="Название" minlength="2" maxlength="30" required>
+              <span class="popup__inp-errmsg" id="inperr-name">Ащипка</span>
+              <input class="popup__inp" name="description" type="url" value="" placeholder="Ссылка на картинку" minlength="3" required>
+              <span class="popup__inp-errmsg" id="inperr-description"></span>
+              <button class="popup__btn-save popup__btn-save_blocked" type="submit" disabled>Сохранить</button>
             </fieldset>
           </form>
           <button class="popup__btn-close" id="popupAddPlaceBtnClose" type="button"></button>
@@ -88,11 +92,12 @@
       </button>
       <button class="place__btn-delit" type="button"></button>
       <div class="place__title">
-       <h2 class="place__name"></h2>
-       <button class="place__btn-like" type="button"></button>
+        <h2 class="place__name"></h2>
+        <button class="place__btn-like" type="button"></button>
       </div>
     </li>
   </template>
 <script src="./scripts/script.js"></script>
+<script src="./scripts/validate.js"></script>
 </body>
 </html>

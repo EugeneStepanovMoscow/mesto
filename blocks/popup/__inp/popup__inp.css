@@ -1,7 +1,7 @@
 .popup__inp {
   width: 100%;
   height: 27px;
-  margin: 0 0 30px 0;
+  margin: 0 0 3px 0;
   padding: 0 0 9px 0;
   box-sizing: border-box;
   border: 0;
@@ -12,6 +12,9 @@
 }
 .popup__inp:focus {
   outline: 0;
+}
+.popup__inp:invalid {
+  border-bottom: 1px solid #FF0000;
 }
 
 
