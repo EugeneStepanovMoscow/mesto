@@ -8,7 +8,7 @@ const settingsObject = {
 }
 
 function showInputError(frmElm, inpElm) {
-  const errElm = frmElm.querySelector(`#inperr-${inpElm.name}`)  //span с текстом ошибки
+  const errElm = frmElm.querySelector(`.inperr-${inpElm.name}`)  //span с текстом ошибки
   //проверка на кол-во символов в строке
   if (inpElm.value.length < 1) {
     errElm.textContent = 'Вы пропустили это поле'
@@ -19,7 +19,7 @@ function showInputError(frmElm, inpElm) {
 };
 
 function hideInputError(frmElm, inpElm) {
-  const errElm = frmElm.querySelector(`#inperr-${inpElm.name}`)
+  const errElm = frmElm.querySelector(`.inperr-${inpElm.name}`)
   errElm.classList.remove(settingsObject.errorClass)
 };
 
