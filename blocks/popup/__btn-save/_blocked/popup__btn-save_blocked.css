@@ -1,0 +1,10 @@
+.popup__btn-save_blocked {
+  color: rgba(0, 0, 0, .2);
+  background-color: #FFF;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-color: rgba(0, 0, 0, .2);
+}
+.popup__btn-save_blocked:hover {
+  background-color: #FFF;
+  cursor: auto;
+}

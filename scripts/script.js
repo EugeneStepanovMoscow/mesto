@@ -7,20 +7,22 @@ const btnPlaceAdd = document.querySelector('.profile__btn-add')
 const popups = document.querySelector('.popups')
 const popupProfileEdit = popups.querySelector('#popupProfileEdit')
 const btnClosePopupProfileEdit = popups.querySelector('#popupProfileEditBtnClose');
-const frmPopupProfileEdit = document.querySelector('#popupProfileEditForm');
-const inpPopupProfileEditName = frmPopupProfileEdit.querySelector('input[name="name"]');
-const inpPopupProfileEditDesc = frmPopupProfileEdit.querySelector('input[name="description"]');
-
 const popupPlaceAdd = popups.querySelector('#popupPlaceAdd')
 const btnClosePopupAdd = popups.querySelector('#popupAddPlaceBtnClose');
-const frmPopupPlaceAdd = document.querySelector('#popupPlaceAddForm');
-const inpPopupPlaceAddPlaceName = frmPopupPlaceAdd.querySelector('input[name="name"]');
-const inpPopupPlaceAddPlaceImg = frmPopupPlaceAdd.querySelector('input[name="description"]');
-
 const popupPlaceView = popups.querySelector('#popupPlaceView');
 const btnClosePopupPlaceView = popups.querySelector('#popupPlaceViewBtnClose');
 const imgPopupPlaceView = popupPlaceView.querySelector('.popup__image');
 const figcapPopupPlaceView = popupPlaceView.querySelector('.popup__figcaption');
+
+//форма профиля
+const frmPopupProfileEdit = document.forms.popupProfileEditForm;
+const inpPopupProfileEditName = frmPopupProfileEdit.elements.name;
+const inpPopupProfileEditDesc = frmPopupProfileEdit.elements.description;
+
+// форма места
+const frmPopupPlaceAdd = document.forms.popupPlaceAddForm;
+const inpPopupPlaceAddPlaceName = frmPopupPlaceAdd.elements.name;
+const inpPopupPlaceAddPlaceImg = frmPopupPlaceAdd.elements.description;
 
 const placesTable = document.querySelector('.places__table')
 
@@ -54,7 +56,7 @@ const initialPlaces = [
 ];
 
 //___________________________________Функция закрытия попапа по Esc или Click-
-function closePopupFromEvt (evt) {
+function closePopupFromEvt(evt) {
   if (evt.target.classList.contains('popup') || evt.key === 'Escape') {
     closePopup(openedPopupName)
   }
@@ -64,13 +66,13 @@ function openPopup(popupName) {
   openedPopupName = popupName
   popupName.classList.add('popup_opened')
   document.addEventListener('keydown', closePopupFromEvt)   //слушатель закрытия по Esp
-  popupName.addEventListener('click', closePopupFromEvt)  //слушатель закрытия по click
+  popupName.addEventListener('click', closePopupFromEvt)    //слушатель закрытия по click
 }
 //___________________________________Функция закрытия попапа-
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened')
   document.removeEventListener('keydown', closePopupFromEvt)  //удаление слушателя закрития по Esp
-  popupName.removeEventListener('click', closePopupFromEvt) //удаление слушателя закрития по click
+  popupName.removeEventListener('click', closePopupFromEvt)   //удаление слушателя закрития по click
 }
 //___________________________________Функция создания карточеки
 function createCard(placeName, placeImage) {
@@ -101,7 +103,7 @@ function submitPlaceAdd() {
 function submitProfileEdit() {
   profilePersonName.textContent = inpPopupProfileEditName.value
   profilePersonDesc.textContent = inpPopupProfileEditDesc.value
-  closePopup(popupProfileEdit)
+  closePopup(popupProfileEdit)  //передавать OpenedPopupName??
 };
 //____________________________________загрузка базовых карточек + слушатели событий
 creatingStartingCards(initialPlaces);
@@ -126,7 +128,6 @@ btnProfileEdit.addEventListener('click', function() {
   inpPopupProfileEditDesc.value = profilePersonDesc.textContent
   openPopup(popupProfileEdit)
 });
-
 //____________________________________Открытие попапа Добавление карточки по кнопке
 btnPlaceAdd.addEventListener('click', () => {openPopup(popupPlaceAdd)});
 //____________________________________закрытие попапа редактирования профиля
@@ -135,10 +136,14 @@ btnClosePopupProfileEdit.addEventListener('click', () => {closePopup(popupProfil
 btnClosePopupAdd.addEventListener('click', () => {closePopup(popupPlaceAdd)});
 //____________________________________закрытие попапа просмотра картинок
 btnClosePopupPlaceView.addEventListener('click', () => {closePopup(popupPlaceView)});
+
+
 //____________________________________сабмит формы добавления карточки
 frmPopupPlaceAdd.addEventListener('submit', function(evt) {
   evt.preventDefault()
   submitPlaceAdd()
+  frmPopupPlaceAdd.querySelector('.popup__btn-save').classList.add(settingsObject.inactiveButtonClass)
+  frmPopupPlaceAdd.querySelector('.popup__btn-save').setAttribute("disabled", "disabled")
 });
 //____________________________________сабмит формы редактирования профиля
 frmPopupProfileEdit.addEventListener('submit', function(evt) {

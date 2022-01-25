@@ -1,0 +1,12 @@
+.popup__inp-errmsg {
+  display: inline-block;
+  min-height: 30px;
+  margin: 0 0 8px 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  color: #FFFFFF;
+}
+.popup__inp-errmsg:last-of-type {
+  margin: 0;
+}
