@@ -29,6 +29,11 @@ const placesTable = document.querySelector('.places__table')
 
 let openedPopupName = ''
 
+// const placeTemplate = document.querySelector('#place-template').content
+// const newPlace = placeTemplate.querySelector('.place').cloneNode(true)
+// const cardImage = newPlace.querySelector('.place__image')
+// const cardName = newPlace.querySelector('.place__name')
+
 const initialPlaces = [
   {
     name: 'Архыз',
@@ -77,10 +82,10 @@ function closePopup(popupName) {
 }
 //___________________________________Функция создания карточеки
 function createCard(placeName, placeImage) {
-  const placeTemplate = document.querySelector('#place-template').content
-  const newPlace = placeTemplate.querySelector('.place').cloneNode(true)
-  const cardImage = newPlace.querySelector('.place__image')
-  const cardName = newPlace.querySelector('.place__name')
+  placeTemplate = document.querySelector('#place-template').content
+  newPlace = placeTemplate.querySelector('.place').cloneNode(true)
+  cardImage = newPlace.querySelector('.place__image')
+  cardName = newPlace.querySelector('.place__name')
   cardName.textContent = placeName
   cardImage.src = placeImage
   cardImage.alt = placeName

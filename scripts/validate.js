@@ -3,11 +3,13 @@ const settingsObject = {
   inputSelector: '.popup__inp',                   //+
   submitButtonSelector: '.popup__btn-save',       //+
   inactiveButtonClass: 'popup__btn-save_blocked', //+
-  inputErrorClass: 'popup__inp_type_error',
+  inputErrorClass: 'popup__inp_type_error',       //+
   errorClass: 'popup__inp-errmsg_active'          //+
 }
 
-function showInputError(frmElm, inpElm) {
+const formsList = Array.from(document.forms)  //ищем все форма в документе перекидываем в массив
+
+function showInputError(frmElm, inpElm, settingsObject) {
   const errElm = frmElm.querySelector(`.inperr-${inpElm.name}`)  //span с текстом ошибки
   //проверка на кол-во символов в строке
   if (inpElm.value.length < 1) {
@@ -19,7 +21,7 @@ function showInputError(frmElm, inpElm) {
   inpElm.classList.add(settingsObject.inputErrorClass)
 };
 
-function hideInputError(frmElm, inpElm) {
+function hideInputError(frmElm, inpElm, settingsObject) {
   const errElm = frmElm.querySelector(`.inperr-${inpElm.name}`)
   errElm.classList.remove(settingsObject.errorClass)
   inpElm.classList.remove(settingsObject.inputErrorClass)
@@ -28,9 +30,9 @@ function hideInputError(frmElm, inpElm) {
 // функция проверки валидности
 function isValid(frmElm, inpElm) {
   if (inpElm.validity.valid) {
-    hideInputError(frmElm, inpElm)
+    hideInputError(frmElm, inpElm, settingsObject)
   } else {
-    showInputError(frmElm, inpElm)
+    showInputError(frmElm, inpElm, settingsObject)
   }
 };
 
@@ -38,7 +40,7 @@ function hasInvalidInput (inputsList) {
   return inputsList.some((inputElement) => {return !inputElement.validity.valid})
 }
 
-function changeButtonStatus(inputsList, buttonElement) {
+function changeButtonStatus(inputsList, buttonElement, settingsObject) {
   if (hasInvalidInput(inputsList)) {
     buttonElement.classList.add(settingsObject.inactiveButtonClass)
     buttonElement.setAttribute("disabled", "disabled")
@@ -48,22 +50,20 @@ function changeButtonStatus(inputsList, buttonElement) {
   }
 }
 
-
-function enableValidation() {
-  const formsList = Array.from(document.forms)                                                    //ищем все форма в документе перекидываем в массив
+function enableValidation(settingsObject) {
   formsList.forEach(function(formElement) {
     const inputsList = Array.from(formElement.querySelectorAll(settingsObject.inputSelector))     //в каждой форме ищим все инпуты
     const buttonElement = formElement.querySelector(settingsObject.submitButtonSelector)          //добавляем кнопку из формы
     inputsList.forEach(function(inputElement) {
       inputElement.addEventListener('input', function() { //добавляем всем инпутам слушателей на input
         isValid(formElement, inputElement)
-        changeButtonStatus(inputsList, buttonElement)
+        changeButtonStatus(inputsList, buttonElement, settingsObject)
       })
     })
   })
 };
 
-enableValidation();
+enableValidation(settingsObject);
 
 
 
