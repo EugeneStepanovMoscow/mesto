@@ -3,7 +3,7 @@ const settingsObject = {
   inputSelector: '.popup__inp',                   //+
   submitButtonSelector: '.popup__btn-save',       //+
   inactiveButtonClass: 'popup__btn-save_blocked', //+
-  inputErrorClass: 'popup__input_type_error',
+  inputErrorClass: 'popup__inp_type_error',
   errorClass: 'popup__inp-errmsg_active'          //+
 }
 
@@ -16,11 +16,13 @@ function showInputError(frmElm, inpElm) {
     errElm.textContent = `Минимальное количество символов: ${inpElm.attributes.minlength.value}. Длина текста сейчас: ${inpElm.value.length} символ`
   }
   errElm.classList.add(settingsObject.errorClass)
+  inpElm.classList.add(settingsObject.inputErrorClass)
 };
 
 function hideInputError(frmElm, inpElm) {
   const errElm = frmElm.querySelector(`.inperr-${inpElm.name}`)
   errElm.classList.remove(settingsObject.errorClass)
+  inpElm.classList.remove(settingsObject.inputErrorClass)
 };
 
 // функция проверки валидности

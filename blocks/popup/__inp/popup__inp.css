@@ -13,9 +13,7 @@
 .popup__inp:focus {
   outline: 0;
 }
-.popup__inp:invalid {
-  border-bottom: 1px solid #FF0000;
-}
+
 
 
 

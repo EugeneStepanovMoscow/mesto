@@ -4,13 +4,14 @@ const profilePersonDesc = document.querySelector('.profile__person-description')
 const btnProfileEdit = document.querySelector('.profile__btn-edit');
 const btnPlaceAdd = document.querySelector('.profile__btn-add')
 
-const popups = document.querySelector('.popups')
-const popupProfileEdit = popups.querySelector('#popupProfileEdit')
-const btnClosePopupProfileEdit = popups.querySelector('#popupProfileEditBtnClose');
-const popupPlaceAdd = popups.querySelector('#popupPlaceAdd')
-const btnClosePopupAdd = popups.querySelector('#popupAddPlaceBtnClose');
-const popupPlaceView = popups.querySelector('#popupPlaceView');
-const btnClosePopupPlaceView = popups.querySelector('#popupPlaceViewBtnClose');
+const popupsSection = document.querySelector('.popups')
+const popups = popupsSection.querySelectorAll('.popup')
+const popupProfileEdit = popupsSection.querySelector('#popupProfileEdit')
+const btnClosePopupProfileEdit = popupsSection.querySelector('#popupProfileEditBtnClose');
+const popupPlaceAdd = popupsSection.querySelector('#popupPlaceAdd')
+const btnClosePopupAdd = popupsSection.querySelector('#popupAddPlaceBtnClose');
+const popupPlaceView = popupsSection.querySelector('#popupPlaceView');
+const btnClosePopupPlaceView = popupsSection.querySelector('#popupPlaceViewBtnClose');
 const imgPopupPlaceView = popupPlaceView.querySelector('.popup__image');
 const figcapPopupPlaceView = popupPlaceView.querySelector('.popup__figcaption');
 
@@ -66,7 +67,7 @@ function openPopup(popupName) {
   openedPopupName = popupName
   popupName.classList.add('popup_opened')
   document.addEventListener('keydown', closePopupFromEvt)   //слушатель закрытия по Esp
-  popupName.addEventListener('click', closePopupFromEvt)    //слушатель закрытия по click
+  popupName.addEventListener('mousedown', closePopupFromEvt)    //слушатель закрытия по click
 }
 //___________________________________Функция закрытия попапа-
 function closePopup(popupName) {
@@ -110,13 +111,18 @@ creatingStartingCards(initialPlaces);
 
 //________________________________________________Слушатели
 //___________________________________Глобальный слушатель на событие Click всех карточек
+
+//Изначально слушатели добавлял при создании каждой карточки в отдельности,
+//но потом переделал через делигирование.
+//Подумал что так проще(меньше слушателей при большом ко-ве карточек => меньше загрузка )
+// какой способ является более правильным и почему?
 placesTable.addEventListener('click', function(evt) {
   if (evt.target.classList.contains('place__btn-like')) {            //клик на кнопке like
       evt.target.classList.toggle('place__btn-like_active');
   } else if (evt.target.classList.contains('place__btn-delit')) {    //клик на кнопке delit
       evt.target.parentElement.remove()
   } else if (evt.target.classList.contains('place__image')) {        //клик на кнопке view
-    openPopup(popupPlaceView)
+    openPopup(popupPlaceView)                                        //открытие профля просмотра карточек
     imgPopupPlaceView.src = evt.target.src
     imgPopupPlaceView.textContent = evt.target.alt
     figcapPopupPlaceView.textContent = evt.target.alt
@@ -130,12 +136,14 @@ btnProfileEdit.addEventListener('click', function() {
 });
 //____________________________________Открытие попапа Добавление карточки по кнопке
 btnPlaceAdd.addEventListener('click', () => {openPopup(popupPlaceAdd)});
+
+
 //____________________________________закрытие попапа редактирования профиля
-btnClosePopupProfileEdit.addEventListener('click', () => {closePopup(popupProfileEdit)});
+btnClosePopupProfileEdit.addEventListener('mousedown', () => {closePopup(popupProfileEdit)});
 //____________________________________закрытие попапа добавления карточки
-btnClosePopupAdd.addEventListener('click', () => {closePopup(popupPlaceAdd)});
+btnClosePopupAdd.addEventListener('mousedown', () => {closePopup(popupPlaceAdd)});
 //____________________________________закрытие попапа просмотра картинок
-btnClosePopupPlaceView.addEventListener('click', () => {closePopup(popupPlaceView)});
+btnClosePopupPlaceView.addEventListener('mousedown', () => {closePopup(popupPlaceView)});
 
 
 //____________________________________сабмит формы добавления карточки
