@@ -29,11 +29,6 @@ const placesTable = document.querySelector('.places__table')
 
 let openedPopupName = ''
 
-// const placeTemplate = document.querySelector('#place-template').content
-// const newPlace = placeTemplate.querySelector('.place').cloneNode(true)
-// const cardImage = newPlace.querySelector('.place__image')
-// const cardName = newPlace.querySelector('.place__name')
-
 const initialPlaces = [
   {
     name: 'Архыз',
@@ -119,7 +114,7 @@ creatingStartingCards(initialPlaces);
 
 //Изначально слушатели добавлял при создании каждой карточки в отдельности,
 //но потом переделал через делигирование.
-//Подумал что так проще(меньше слушателей при большом ко-ве карточек => меньше загрузка )
+//Подумал что так проще(меньше слушателей при большом ко-ве карточек => меньше загрузка, наверное )
 // какой способ является более правильным и почему?
 placesTable.addEventListener('click', function(evt) {
   if (evt.target.classList.contains('place__btn-like')) {            //клик на кнопке like

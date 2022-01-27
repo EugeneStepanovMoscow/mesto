@@ -10,8 +10,10 @@ const settingsObject = {
 const formsList = Array.from(document.forms)  //ищем все форма в документе перекидываем в массив
 
 function showInputError(frmElm, inpElm, settingsObject) {
-  const errElm = frmElm.querySelector(`.inperr-${inpElm.name}`)  //span с текстом ошибки
-  //проверка на кол-во символов в строке
+  //я не понимаю как переменные, которые обьявляются в функциях перенести в начало файла.
+  //errElm всегда будет разным. И даже если я его обьявлю в начале файла, то в функции все равно надо будет искать
+  //методом qeurySelecrot. т.к. будет 4 возможных варианта
+  const errElm = frmElm.querySelector(`.inperr-${inpElm.name}`) //span с текстом ошибки
   if (inpElm.value.length < 1) {
     errElm.textContent = 'Вы пропустили это поле'
   } else {
@@ -27,7 +29,6 @@ function hideInputError(frmElm, inpElm, settingsObject) {
   inpElm.classList.remove(settingsObject.inputErrorClass)
 };
 
-// функция проверки валидности
 function isValid(frmElm, inpElm) {
   if (inpElm.validity.valid) {
     hideInputError(frmElm, inpElm, settingsObject)
@@ -53,9 +54,9 @@ function changeButtonStatus(inputsList, buttonElement, settingsObject) {
 function enableValidation(settingsObject) {
   formsList.forEach(function(formElement) {
     const inputsList = Array.from(formElement.querySelectorAll(settingsObject.inputSelector))     //в каждой форме ищим все инпуты
-    const buttonElement = formElement.querySelector(settingsObject.submitButtonSelector)          //добавляем кнопку из формы
+    const buttonElement = formElement.querySelector(settingsObject.submitButtonSelector)
     inputsList.forEach(function(inputElement) {
-      inputElement.addEventListener('input', function() { //добавляем всем инпутам слушателей на input
+      inputElement.addEventListener('input', function() {
         isValid(formElement, inputElement)
         changeButtonStatus(inputsList, buttonElement, settingsObject)
       })
