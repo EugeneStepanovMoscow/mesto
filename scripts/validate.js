@@ -10,9 +10,7 @@ const settingsObject = {
 const formsList = Array.from(document.forms)  //ищем все форма в документе перекидываем в массив
 
 function showInputError(frmElm, inpElm, settingsObject) {
-  //я не понимаю как переменные, которые обьявляются в функциях перенести в начало файла.
-  //errElm всегда будет разным. И даже если я его обьявлю в начале файла, то в функции все равно надо будет искать
-  //методом qeurySelecrot. т.к. будет 4 возможных варианта
+
   const errElm = frmElm.querySelector(`.inperr-${inpElm.name}`) //span с текстом ошибки
   if (inpElm.value.length < 1) {
     errElm.textContent = 'Вы пропустили это поле'
@@ -29,7 +27,7 @@ function hideInputError(frmElm, inpElm, settingsObject) {
   inpElm.classList.remove(settingsObject.inputErrorClass)
 };
 
-function isValid(frmElm, inpElm) {
+function isValid(frmElm, inpElm, settingsObject) {
   if (inpElm.validity.valid) {
     hideInputError(frmElm, inpElm, settingsObject)
   } else {
@@ -57,7 +55,7 @@ function enableValidation(settingsObject) {
     const buttonElement = formElement.querySelector(settingsObject.submitButtonSelector)
     inputsList.forEach(function(inputElement) {
       inputElement.addEventListener('input', function() {
-        isValid(formElement, inputElement)
+        isValid(formElement, inputElement, settingsObject)
         changeButtonStatus(inputsList, buttonElement, settingsObject)
       })
     })
