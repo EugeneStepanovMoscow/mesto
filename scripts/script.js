@@ -24,17 +24,11 @@ const inpPopupProfileEditDesc = frmPopupProfileEdit.elements.description;
 const frmPopupPlaceAdd = document.forms.popupPlaceAddForm;
 const inpPopupPlaceAddPlaceName = frmPopupPlaceAdd.elements.name;
 const inpPopupPlaceAddPlaceImg = frmPopupPlaceAdd.elements.description;
+const placeAddSubmitButton = frmPopupPlaceAdd.querySelector('.popup__btn-save')
 
 const placesTable = document.querySelector('.places__table')
 
 let openedPopupName = ''
-let newPlaceCard = ''
-let cardImage = ''
-let cardName = ''
-
-const placeTemplate = document.querySelector('#place-template').content
-const newPlace = placeTemplate.querySelector('.place')
-
 
 const initialPlaces = [
   {
@@ -84,13 +78,14 @@ function closePopup(popupName) {
 }
 //___________________________________Функция создания карточеки
 function createCard(placeName, placeImage) {
-  newPlaceCard = newPlace.cloneNode(true)
-  cardImage = newPlaceCard.querySelector('.place__image')
-  cardName = newPlaceCard.querySelector('.place__name')
+  const placeTemplate = document.querySelector('#place-template').content
+  const newPlace = placeTemplate.querySelector('.place').cloneNode(true)
+  const cardImage = newPlace.querySelector('.place__image')
+  const cardName = newPlace.querySelector('.place__name')
   cardName.textContent = placeName
   cardImage.src = placeImage
   cardImage.alt = placeName
-  return newPlaceCard
+  return newPlace
 };
 //___________________________________Функция добавления карточеки в DOM
 function addCard(itemCard) {
@@ -117,11 +112,6 @@ creatingStartingCards(initialPlaces);
 
 //________________________________________________Слушатели
 //___________________________________Глобальный слушатель на событие Click всех карточек
-
-//Изначально слушатели добавлял при создании каждой карточки в отдельности,
-//но потом переделал через делигирование.
-//Подумал что так проще(меньше слушателей при большом ко-ве карточек => меньше загрузка, наверное )
-// какой способ является более правильным и почему?
 placesTable.addEventListener('click', function(evt) {
   if (evt.target.classList.contains('place__btn-like')) {            //клик на кнопке like
       evt.target.classList.toggle('place__btn-like_active');
@@ -156,12 +146,13 @@ btnClosePopupPlaceView.addEventListener('mousedown', () => {closePopup(popupPlac
 frmPopupPlaceAdd.addEventListener('submit', function(evt) {
   evt.preventDefault()
   submitPlaceAdd()
-  frmPopupPlaceAdd.querySelector('.popup__btn-save').classList.add(settingsObject.inactiveButtonClass)
-  frmPopupPlaceAdd.querySelector('.popup__btn-save').setAttribute("disabled", "disabled")
+  placeAddSubmitButton.classList.add(settingsObject.inactiveButtonClass)
+  placeAddSubmitButton.setAttribute("disabled", "disabled")
 });
 //____________________________________сабмит формы редактирования профиля
 frmPopupProfileEdit.addEventListener('submit', function(evt) {
   evt.preventDefault()
   submitProfileEdit()
 });
+
 
