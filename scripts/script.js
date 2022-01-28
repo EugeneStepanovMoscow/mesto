@@ -28,6 +28,13 @@ const inpPopupPlaceAddPlaceImg = frmPopupPlaceAdd.elements.description;
 const placesTable = document.querySelector('.places__table')
 
 let openedPopupName = ''
+let newPlaceCard = ''
+let cardImage = ''
+let cardName = ''
+
+const placeTemplate = document.querySelector('#place-template').content
+const newPlace = placeTemplate.querySelector('.place')
+
 
 const initialPlaces = [
   {
@@ -77,14 +84,13 @@ function closePopup(popupName) {
 }
 //___________________________________Функция создания карточеки
 function createCard(placeName, placeImage) {
-  placeTemplate = document.querySelector('#place-template').content
-  newPlace = placeTemplate.querySelector('.place').cloneNode(true)
-  cardImage = newPlace.querySelector('.place__image')
-  cardName = newPlace.querySelector('.place__name')
+  newPlaceCard = newPlace.cloneNode(true)
+  cardImage = newPlaceCard.querySelector('.place__image')
+  cardName = newPlaceCard.querySelector('.place__name')
   cardName.textContent = placeName
   cardImage.src = placeImage
   cardImage.alt = placeName
-  return newPlace
+  return newPlaceCard
 };
 //___________________________________Функция добавления карточеки в DOM
 function addCard(itemCard) {
