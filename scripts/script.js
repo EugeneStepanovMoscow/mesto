@@ -12,8 +12,7 @@ const popupPlaceAdd = popupsSection.querySelector('#popupPlaceAdd')
 const btnClosePopupAdd = popupsSection.querySelector('#popupAddPlaceBtnClose');
 const popupPlaceView = popupsSection.querySelector('#popupPlaceView');
 const btnClosePopupPlaceView = popupsSection.querySelector('#popupPlaceViewBtnClose');
-const imgPopupPlaceView = popupPlaceView.querySelector('.popup__image');
-const figcapPopupPlaceView = popupPlaceView.querySelector('.popup__figcaption');
+
 
 //форма профиля
 const frmPopupProfileEdit = document.forms.popupProfileEditForm;
@@ -70,12 +69,17 @@ function openPopup(popupName) {
   document.addEventListener('keydown', closePopupFromEvt)   //слушатель закрытия по Esp
   popupName.addEventListener('mousedown', closePopupFromEvt)    //слушатель закрытия по click
 }
+
+export { openPopup }
+
 //___________________________________Функция закрытия попапа-
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened')
   document.removeEventListener('keydown', closePopupFromEvt)  //удаление слушателя закрития по Esp
   popupName.removeEventListener('click', closePopupFromEvt)   //удаление слушателя закрития по click
 }
+
+
 //___________________________________Функция создания карточеки
 function createCard(placeName, placeImage) {
   const placeTemplate = document.querySelector('#place-template').content
@@ -94,6 +98,62 @@ function addCard(itemCard) {
 function creatingStartingCards(cardArr) {
   cardArr.forEach(element => addCard(createCard(element.name, element.link)))
 }
+
+//_________________________________класс Card
+import { Card } from './Card.js'
+
+
+  // _handleOpenPopup() {
+  //   popupImage.src = this._image;
+  //   popupElement.classList.add('popup_is-opened');
+  // }
+
+  // _handleClosePopup() {
+  //   popupImage.src = '';
+  //   popupElement.classList.remove('popup_is-opened');
+  // }
+
+
+
+    // popupCloseButton.addEventListener('click', () => {
+    //   this._handleClosePopup();
+    // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+//__________________________________Объявление функции отрисовки (добавления в DOM) карточки места
+function renderPlaceCard() {
+  initialPlaces.forEach((element) => {
+    const placeCard = new Card(element, '#place-template')
+    const placeElement = placeCard.generateCard();
+    placesTable.append(placeElement)
+  });
+}
+//выхов функции
+renderPlaceCard()
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ___________________________________Функция отработки submit на попапе добавления карточки
 function submitPlaceAdd() {
   addCard(createCard(inpPopupPlaceAddPlaceName.value, inpPopupPlaceAddPlaceImg.value))
@@ -108,31 +168,30 @@ function submitProfileEdit() {
   closePopup(popupProfileEdit)  //передавать OpenedPopupName??
 };
 //____________________________________загрузка базовых карточек + слушатели событий
-creatingStartingCards(initialPlaces);
+// creatingStartingCards(initialPlaces);
 
 //________________________________________________Слушатели
 //___________________________________Глобальный слушатель на событие Click всех карточек
-placesTable.addEventListener('click', function(evt) {
-  if (evt.target.classList.contains('place__btn-like')) {            //клик на кнопке like
-      evt.target.classList.toggle('place__btn-like_active');
-  } else if (evt.target.classList.contains('place__btn-delit')) {    //клик на кнопке delit
-      evt.target.parentElement.remove()
-  } else if (evt.target.classList.contains('place__image')) {        //клик на кнопке view
-    openPopup(popupPlaceView)                                        //открытие профля просмотра карточек
-    imgPopupPlaceView.src = evt.target.src
-    imgPopupPlaceView.textContent = evt.target.alt
-    figcapPopupPlaceView.textContent = evt.target.alt
-  }
-})
+// placesTable.addEventListener('click', function(evt) {
+//   if (evt.target.classList.contains('place__btn-like')) {            //клик на кнопке like
+//       evt.target.classList.toggle('place__btn-like_active');
+//   } else if (evt.target.classList.contains('place__btn-delit')) {    //клик на кнопке delit
+//       evt.target.parentElement.remove()
+//   } else if (evt.target.classList.contains('place__image')) {        //клик на кнопке view
+//     openPopup(popupPlaceView)                                        //открытие профля просмотра карточек
+//     imgPopupPlaceView.src = evt.target.src
+//     imgPopupPlaceView.textContent = evt.target.alt
+//     figcapPopupPlaceView.textContent = evt.target.alt
+//   }
+// })
 //____________________________________Открытие попапа Редактирование профиля по кнопке
-btnProfileEdit.addEventListener('click', function() {
-  inpPopupProfileEditName.value = profilePersonName.textContent
-  inpPopupProfileEditDesc.value = profilePersonDesc.textContent
-  openPopup(popupProfileEdit)
-});
+// btnProfileEdit.addEventListener('click', function() {
+//   inpPopupProfileEditName.value = profilePersonName.textContent
+//   inpPopupProfileEditDesc.value = profilePersonDesc.textContent
+//   openPopup(popupProfileEdit)
+// });
 //____________________________________Открытие попапа Добавление карточки по кнопке
 btnPlaceAdd.addEventListener('click', () => {openPopup(popupPlaceAdd)});
-
 
 //____________________________________закрытие попапа редактирования профиля
 btnClosePopupProfileEdit.addEventListener('mousedown', () => {closePopup(popupProfileEdit)});
