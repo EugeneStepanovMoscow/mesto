@@ -80,55 +80,9 @@ function closePopup(popupName) {
 }
 
 
-//___________________________________Функция создания карточеки
-function createCard(placeName, placeImage) {
-  const placeTemplate = document.querySelector('#place-template').content
-  const newPlace = placeTemplate.querySelector('.place').cloneNode(true)
-  const cardImage = newPlace.querySelector('.place__image')
-  const cardName = newPlace.querySelector('.place__name')
-  cardName.textContent = placeName
-  cardImage.src = placeImage
-  cardImage.alt = placeName
-  return newPlace
-};
-//___________________________________Функция добавления карточеки в DOM
-function addCard(itemCard) {
-  placesTable.prepend(itemCard)
-};
-function creatingStartingCards(cardArr) {
-  cardArr.forEach(element => addCard(createCard(element.name, element.link)))
-}
 
 //_________________________________класс Card
 import { Card } from './Card.js'
-
-
-  // _handleOpenPopup() {
-  //   popupImage.src = this._image;
-  //   popupElement.classList.add('popup_is-opened');
-  // }
-
-  // _handleClosePopup() {
-  //   popupImage.src = '';
-  //   popupElement.classList.remove('popup_is-opened');
-  // }
-
-
-
-    // popupCloseButton.addEventListener('click', () => {
-    //   this._handleClosePopup();
-    // });
-
-
-
-
-
-
-
-
-
-
-
 
 
 //__________________________________Объявление функции отрисовки (добавления в DOM) карточки места
@@ -141,16 +95,6 @@ function renderPlaceCard() {
 }
 //выхов функции
 renderPlaceCard()
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -167,8 +111,7 @@ function submitProfileEdit() {
   profilePersonDesc.textContent = inpPopupProfileEditDesc.value
   closePopup(popupProfileEdit)  //передавать OpenedPopupName??
 };
-//____________________________________загрузка базовых карточек + слушатели событий
-// creatingStartingCards(initialPlaces);
+
 
 //________________________________________________Слушатели
 //___________________________________Глобальный слушатель на событие Click всех карточек

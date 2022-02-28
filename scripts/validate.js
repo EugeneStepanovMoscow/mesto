@@ -9,6 +9,18 @@ const settingsObject = {
 
 const formsList = Array.from(document.forms)  //ищем все форма в документе перекидываем в массив
 
+console.log(document.forms[0].id)
+console.log(document.forms[1].id)
+
+
+class FormValidator {
+  constructor(settings, formElement) {
+
+  }
+}
+
+
+
 function showInputError(frmElm, inpElm, settingsObject) {
 
   const errElm = frmElm.querySelector(`.inperr-${inpElm.name}`) //span с текстом ошибки
@@ -49,6 +61,10 @@ function changeButtonStatus(inputsList, buttonElement, settingsObject) {
   }
 }
 
+
+
+
+//________________________________________________________прохождение оп массиву форм
 function enableValidation(settingsObject) {
   formsList.forEach(function(formElement) {
     const inputsList = Array.from(formElement.querySelectorAll(settingsObject.inputSelector))     //в каждой форме ищим все инпуты
