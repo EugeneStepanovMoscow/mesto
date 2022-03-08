@@ -87,8 +87,8 @@ import { Card } from './Card.js'
 
 //__________________________________Объявление функции отрисовки (добавления в DOM) карточки места
 function renderPlaceCard() {
-  initialPlaces.forEach((element) => {
-    const placeCard = new Card(element, '#place-template')
+  initialPlaces.forEach((startElement) => {
+    const placeCard = new Card(startElement, '#place-template')
     const placeElement = placeCard.generateCard();
     placesTable.append(placeElement)
   });
@@ -100,7 +100,12 @@ renderPlaceCard()
 
 // ___________________________________Функция отработки submit на попапе добавления карточки
 function submitPlaceAdd() {
-  addCard(createCard(inpPopupPlaceAddPlaceName.value, inpPopupPlaceAddPlaceImg.value))
+  const element = {}
+  element.name = inpPopupPlaceAddPlaceName.value
+  element.link = inpPopupPlaceAddPlaceImg.value
+  const placeCard = new Card(element, '#place-template')
+  const placeElement = placeCard.generateCard();
+  placesTable.append(placeElement)
   closePopup(popupPlaceAdd)
   inpPopupPlaceAddPlaceName.value = ''
   inpPopupPlaceAddPlaceImg.value = ''
@@ -112,27 +117,12 @@ function submitProfileEdit() {
   closePopup(popupProfileEdit)  //передавать OpenedPopupName??
 };
 
-
-//________________________________________________Слушатели
-//___________________________________Глобальный слушатель на событие Click всех карточек
-// placesTable.addEventListener('click', function(evt) {
-//   if (evt.target.classList.contains('place__btn-like')) {            //клик на кнопке like
-//       evt.target.classList.toggle('place__btn-like_active');
-//   } else if (evt.target.classList.contains('place__btn-delit')) {    //клик на кнопке delit
-//       evt.target.parentElement.remove()
-//   } else if (evt.target.classList.contains('place__image')) {        //клик на кнопке view
-//     openPopup(popupPlaceView)                                        //открытие профля просмотра карточек
-//     imgPopupPlaceView.src = evt.target.src
-//     imgPopupPlaceView.textContent = evt.target.alt
-//     figcapPopupPlaceView.textContent = evt.target.alt
-//   }
-// })
 //____________________________________Открытие попапа Редактирование профиля по кнопке
-// btnProfileEdit.addEventListener('click', function() {
-//   inpPopupProfileEditName.value = profilePersonName.textContent
-//   inpPopupProfileEditDesc.value = profilePersonDesc.textContent
-//   openPopup(popupProfileEdit)
-// });
+btnProfileEdit.addEventListener('click', function() {
+  inpPopupProfileEditName.value = profilePersonName.textContent
+  inpPopupProfileEditDesc.value = profilePersonDesc.textContent
+  openPopup(popupProfileEdit)
+});
 //____________________________________Открытие попапа Добавление карточки по кнопке
 btnPlaceAdd.addEventListener('click', () => {openPopup(popupPlaceAdd)});
 
@@ -142,7 +132,6 @@ btnClosePopupProfileEdit.addEventListener('mousedown', () => {closePopup(popupPr
 btnClosePopupAdd.addEventListener('mousedown', () => {closePopup(popupPlaceAdd)});
 //____________________________________закрытие попапа просмотра картинок
 btnClosePopupPlaceView.addEventListener('mousedown', () => {closePopup(popupPlaceView)});
-
 
 //____________________________________сабмит формы добавления карточки
 frmPopupPlaceAdd.addEventListener('submit', function(evt) {
@@ -157,4 +146,4 @@ frmPopupProfileEdit.addEventListener('submit', function(evt) {
   submitProfileEdit()
 });
 
-
+import { settingsObject, formsList, FormValidator } from './validate.js'

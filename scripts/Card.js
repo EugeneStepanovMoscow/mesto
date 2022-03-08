@@ -29,7 +29,6 @@ class Card {
     })
   //слушатель удаления карточки
     this._element.querySelector('.place__btn-delit').addEventListener('click', () => {
-      console.log(this._element)
       this._element.remove()
     })
   //слушатель открытия попапа просмотра

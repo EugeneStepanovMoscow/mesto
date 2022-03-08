@@ -4,81 +4,84 @@ const settingsObject = {
   submitButtonSelector: '.popup__btn-save',       //+
   inactiveButtonClass: 'popup__btn-save_blocked', //+
   inputErrorClass: 'popup__inp_type_error',       //+
-  errorClass: 'popup__inp-errmsg_active'          //+
+  errorClass: 'popup__inp-errmsg_active'
 }
 
 const formsList = Array.from(document.forms)  //ищем все форма в документе перекидываем в массив
 
-console.log(document.forms[0].id)
-console.log(document.forms[1].id)
-
-
 class FormValidator {
   constructor(settings, formElement) {
+    this.formElement = formElement
 
+    this.formSelector = settings.formSelector
+    this.inputSelector = settings.inputSelector
+    this.submitButtonSelector = settings.submitButtonSelector
+    this.inactiveButtonClass = settings.inactiveButtonClass
+    this.inputErrorClass = settings.inputErrorClass
+    this.errorClass = settings.errorClass
   }
-}
 
-
-
-function showInputError(frmElm, inpElm, settingsObject) {
-
-  const errElm = frmElm.querySelector(`.inperr-${inpElm.name}`) //span с текстом ошибки
-  if (inpElm.value.length < 1) {
-    errElm.textContent = 'Вы пропустили это поле'
-  } else {
-    errElm.textContent = `Минимальное количество символов: ${inpElm.attributes.minlength.value}. Длина текста сейчас: ${inpElm.value.length} символ`
+  enableValidation() {
+    this._setEventListeners(this.formElement)
   }
-  errElm.classList.add(settingsObject.errorClass)
-  inpElm.classList.add(settingsObject.inputErrorClass)
-};
 
-function hideInputError(frmElm, inpElm, settingsObject) {
-  const errElm = frmElm.querySelector(`.inperr-${inpElm.name}`)
-  errElm.classList.remove(settingsObject.errorClass)
-  inpElm.classList.remove(settingsObject.inputErrorClass)
-};
-
-function isValid(frmElm, inpElm, settingsObject) {
-  if (inpElm.validity.valid) {
-    hideInputError(frmElm, inpElm, settingsObject)
+  _isValid(formElement, input) {
+  if (input.validity.valid) {
+    this._hideInputError(formElement, input)
   } else {
-    showInputError(frmElm, inpElm, settingsObject)
+    this._showInputError(formElement, input)
   }
 };
 
-function hasInvalidInput (inputsList) {
-  return inputsList.some((inputElement) => {return !inputElement.validity.valid})
-}
-
-function changeButtonStatus(inputsList, buttonElement, settingsObject) {
-  if (hasInvalidInput(inputsList)) {
-    buttonElement.classList.add(settingsObject.inactiveButtonClass)
-    buttonElement.setAttribute("disabled", "disabled")
-  } else {
-    buttonElement.classList.remove(settingsObject.inactiveButtonClass)
-    buttonElement.removeAttribute("disabled")
-  }
-}
-
-
-
-
-//________________________________________________________прохождение оп массиву форм
-function enableValidation(settingsObject) {
-  formsList.forEach(function(formElement) {
-    const inputsList = Array.from(formElement.querySelectorAll(settingsObject.inputSelector))     //в каждой форме ищим все инпуты
-    const buttonElement = formElement.querySelector(settingsObject.submitButtonSelector)
-    inputsList.forEach(function(inputElement) {
-      inputElement.addEventListener('input', function() {
-        isValid(formElement, inputElement, settingsObject)
-        changeButtonStatus(inputsList, buttonElement, settingsObject)
+  _setEventListeners(formElement) {
+    const inputsList = Array.from(formElement.querySelectorAll(this.inputSelector))
+    const buttonElement = formElement.querySelector(this.submitButtonSelector)
+    inputsList.forEach((input) => {
+      input.addEventListener('input', () => {
+        this._changeButtonStatus(inputsList, buttonElement)
+        this._isValid(formElement, input)
       })
     })
-  })
-};
+  }
 
-enableValidation(settingsObject);
+  _hasInvalidInput(inputsList) {
+    return inputsList.some((inputElement) => {return !inputElement.validity.valid})
+  }
+
+  _changeButtonStatus(inputsList, buttonElement) {
+    if (this._hasInvalidInput(inputsList)) {
+        buttonElement.classList.add(this.inactiveButtonClass)
+        buttonElement.setAttribute("disabled", "disabled")
+    } else {
+        buttonElement.classList.remove(this.inactiveButtonClass)
+        buttonElement.removeAttribute("disabled")
+    }
+  }
+
+  _showInputError(formElement, input) {
+    const errorElement = formElement.querySelector(`.inperr-${input.name}`) //span с текстом ошибки
+    if (input.value.length < 1) {
+      errorElement.textContent = 'Вы пропустили это поле'
+    } else {
+      errorElement.textContent = `Минимальное количество символов: ${input.attributes.minlength.value}. Длина текста сейчас: ${input.value.length} символ`
+    }
+    errorElement.classList.add(this.errorClass)
+    input.classList.add(this.inputErrorClass)
+  };
+
+  _hideInputError(formElement, input) {
+    const errorElement = formElement.querySelector(`.inperr-${input.name}`)
+    errorElement.classList.remove(this.errorClass)
+    input.classList.remove(this.inputErrorClass)
+  }
+}
+
+formsList.forEach((formElement) => {
+  const formValidator = new FormValidator(settingsObject, formElement)
+  formValidator.enableValidation()
+})
+
+export {settingsObject, formsList, FormValidator}
 
 
 
