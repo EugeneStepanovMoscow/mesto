@@ -60,11 +60,7 @@ class FormValidator {
 
   _showInputError(formElement, input) {
     const errorElement = formElement.querySelector(`.inperr-${input.name}`) //span с текстом ошибки
-    if (input.value.length < 1) {
-      errorElement.textContent = 'Вы пропустили это поле'
-    } else {
-      errorElement.textContent = `Минимальное количество символов: ${input.attributes.minlength.value}. Длина текста сейчас: ${input.value.length} символ`
-    }
+    errorElement.textContent = input.validationMessage
     errorElement.classList.add(this.errorClass)
     input.classList.add(this.inputErrorClass)
   };
@@ -76,12 +72,14 @@ class FormValidator {
   }
 }
 
-formsList.forEach((formElement) => {
-  const formValidator = new FormValidator(settingsObject, formElement)
-  formValidator.enableValidation()
-})
+  const formValidatorPopupProfileEdit = new FormValidator(settingsObject, formsList[0])
+  formValidatorPopupProfileEdit.enableValidation()
 
-export {settingsObject, formsList, FormValidator}
+  const formValidatorPopupPlaceAdd = new FormValidator(settingsObject, formsList[1])
+  formValidatorPopupPlaceAdd.enableValidation()
+
+export {settingsObject, formsList }
+
 
 
 

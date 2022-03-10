@@ -1,7 +1,5 @@
-const imgPopupPlaceView = popupPlaceView.querySelector('.popup__image');
-const figcapPopupPlaceView = popupPlaceView.querySelector('.popup__figcaption');
+import { imgPopupPlaceView, figcapPopupPlaceView, openPopup } from './utils.js'
 
-import { openPopup } from './script.js'
 
 class Card {
   constructor(data, cardSelector) {
@@ -30,6 +28,7 @@ class Card {
   //слушатель удаления карточки
     this._element.querySelector('.place__btn-delit').addEventListener('click', () => {
       this._element.remove()
+      this._element = null
     })
   //слушатель открытия попапа просмотра
     this._element.querySelector('.place__image').addEventListener('click', () => {
@@ -47,4 +46,4 @@ class Card {
   }
 }
 
-export {imgPopupPlaceView, figcapPopupPlaceView, Card}
+export {Card}
