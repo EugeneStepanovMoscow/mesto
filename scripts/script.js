@@ -26,9 +26,12 @@ const placeAddSubmitButton = frmPopupPlaceAdd.querySelector('.popup__btn-save')
 
 const placesTable = document.querySelector('.places__table')
 
+const formsList = Array.from(document.forms)  //ищем все форма в документе перекидываем в массив
+
 import { initialPlaces } from './cardsData.js'
 import { openPopup, closePopup } from './utils.js'
 import { Card } from './Card.js'
+import { settingsObject, FormValidator } from './validate.js'
 
 function createCart(startElement) {
   const placeCard = new Card(startElement, '#place-template')
@@ -91,4 +94,8 @@ frmPopupProfileEdit.addEventListener('submit', function(evt) {
   submitProfileEdit()
 });
 
-import { settingsObject } from './validate.js'
+const formValidatorPopupProfileEdit = new FormValidator(settingsObject, formsList[0])
+formValidatorPopupProfileEdit.enableValidation()
+
+const formValidatorPopupPlaceAdd = new FormValidator(settingsObject, formsList[1])
+formValidatorPopupPlaceAdd.enableValidation()

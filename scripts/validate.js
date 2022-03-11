@@ -7,8 +7,6 @@ const settingsObject = {
   errorClass: 'popup__inp-errmsg_active'
 }
 
-const formsList = Array.from(document.forms)  //ищем все форма в документе перекидываем в массив
-
 class FormValidator {
   constructor(settings, formElement) {
     this.formElement = formElement
@@ -72,13 +70,7 @@ class FormValidator {
   }
 }
 
-  const formValidatorPopupProfileEdit = new FormValidator(settingsObject, formsList[0])
-  formValidatorPopupProfileEdit.enableValidation()
-
-  const formValidatorPopupPlaceAdd = new FormValidator(settingsObject, formsList[1])
-  formValidatorPopupPlaceAdd.enableValidation()
-
-export {settingsObject, formsList }
+export {settingsObject, FormValidator }
 
 
 
