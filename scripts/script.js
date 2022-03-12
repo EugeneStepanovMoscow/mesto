@@ -53,7 +53,7 @@ function submitPlaceAdd() {
   const element = {}
   element.name = inpPopupPlaceAddPlaceName.value
   element.link = inpPopupPlaceAddPlaceImg.value
-  placesTable.append(createCart(element))
+  placesTable.prepend(createCart(element))
   closePopup(popupPlaceAdd)
   frmPopupPlaceAdd.reset()
 
