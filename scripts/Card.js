@@ -3,13 +3,14 @@ import { imgPopupPlaceView, figcapPopupPlaceView, openPopup } from './utils.js'
 
 class Card {
   constructor(data, cardSelector) {
+
     this._name = data.name;
     this._imgLink = data.link;
     this._cardSelector = cardSelector;
   }
 //получение темплейт структуры из HTML
   _getTemplate() {
-    const cardElement = document.querySelector(this._cardSelector).content.querySelector('.place').cloneNode(true);
+    const cardElement = document.getElementById(this._cardSelector).content.querySelector('.place').cloneNode(true);
     return cardElement;
   }
 

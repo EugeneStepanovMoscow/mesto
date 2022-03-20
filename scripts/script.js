@@ -17,28 +17,45 @@ import {
   formsList,
   frmPopupPlaceAdd,
   frmPopupProfileEdit,
-  initialPlaces
+  initialPlaces,
+  containerSelector,
+  placeSelector
 } from './utils/constants.js'
 
 import { openPopup, closePopup } from './utils.js'
 import { Card } from './Card.js'
 import { settingsObject, FormValidator } from './validate.js'
+import Section from './Section.js'
 
-function createCart(startElement) {
-  const placeCard = new Card(startElement, '#place-template')
-  const placeElement = placeCard.generateCard()
-  return placeElement
-}
+// function createCard(startElement) {
+//   const placeCard = new Card(startElement, '#place-template')
+//   const placeElement = placeCard.generateCard()
+//   return placeElement
+// }
 
 //__________________________________Объявление функции отрисовки (добавления в DOM) карточки места
-function renderPlaceCard() {
-  initialPlaces.forEach((startElement) => {
-    placesTable.append(createCart(startElement))
-  });
-}
-//вызов функции
-renderPlaceCard()
+// function renderPlaceCard() {
+//   initialPlaces.forEach((startElement) => {
+//     placesTable.append(createCard(startElement))
+//   });
+// }
+// //вызов функции
+// renderPlaceCard()
+// debugger
+const startCards = new Section({
 
+  items: initialPlaces,
+  renderer: (initialPlace) => {
+    const place = new Card(initialPlace, placeSelector)
+    const placeElement = place.generateCard()
+// debugger
+    startCards.addItem(placeElement)
+  }
+},
+  containerSelector)
+
+
+startCards.render()
 
 class Popup {
   constructor(popupName) {
@@ -68,7 +85,7 @@ function submitPlaceAdd() {
   const element = {}
   element.name = inpPopupPlaceAddPlaceName.value
   element.link = inpPopupPlaceAddPlaceImg.value
-  placesTable.prepend(createCart(element))
+  placesTable.prepend(createCard(element))
   closePopup(popupPlaceAdd)
   frmPopupPlaceAdd.reset()
 

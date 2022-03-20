@@ -23,6 +23,8 @@ export const inpPopupPlaceAddPlaceImg = frmPopupPlaceAdd.elements.description;
 export const placeAddSubmitButton = frmPopupPlaceAdd.querySelector('.popup__btn-save')
 
 export const placesTable = document.querySelector('.places__table')
+export const containerSelector = '.places__table'
+export const placeSelector = 'place-template'
 
 export const formsList = Array.from(document.forms)  //ищем все форма в документе перекидываем в массив
 
