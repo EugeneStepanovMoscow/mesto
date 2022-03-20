@@ -1,34 +1,25 @@
-const profilePersonName = document.querySelector('.profile__person-name');
-const profilePersonDesc = document.querySelector('.profile__person-description');
+import {
+  profilePersonName,
+  profilePersonDesc,
+  btnProfileEdit,
+  btnPlaceAdd,
+  btnClosePopupProfileEdit,
+  popupPlaceAdd,
+  btnClosePopupAdd,
+  popupPlaceView,
+  btnClosePopupPlaceView,
+  inpPopupProfileEditName,
+  inpPopupProfileEditDesc,
+  inpPopupPlaceAddPlaceName,
+  inpPopupPlaceAddPlaceImg,
+  placeAddSubmitButton,
+  placesTable,
+  formsList,
+  frmPopupPlaceAdd,
+  frmPopupProfileEdit,
+  initialPlaces
+} from './utils/constants.js'
 
-const btnProfileEdit = document.querySelector('.profile__btn-edit');
-const btnPlaceAdd = document.querySelector('.profile__btn-add')
-
-const popupsSection = document.querySelector('.popups')
-const popups = popupsSection.querySelectorAll('.popup')
-const popupProfileEdit = popupsSection.querySelector('#popupProfileEdit')
-const btnClosePopupProfileEdit = popupsSection.querySelector('#popupProfileEditBtnClose');
-const popupPlaceAdd = popupsSection.querySelector('#popupPlaceAdd')
-const btnClosePopupAdd = popupsSection.querySelector('#popupAddPlaceBtnClose');
-const popupPlaceView = popupsSection.querySelector('#popupPlaceView');
-const btnClosePopupPlaceView = popupsSection.querySelector('#popupPlaceViewBtnClose');
-
-//форма профиля
-const frmPopupProfileEdit = document.forms.popupProfileEditForm;
-const inpPopupProfileEditName = frmPopupProfileEdit.elements.name;
-const inpPopupProfileEditDesc = frmPopupProfileEdit.elements.description;
-
-// форма места
-const frmPopupPlaceAdd = document.forms.popupPlaceAddForm;
-const inpPopupPlaceAddPlaceName = frmPopupPlaceAdd.elements.name;
-const inpPopupPlaceAddPlaceImg = frmPopupPlaceAdd.elements.description;
-const placeAddSubmitButton = frmPopupPlaceAdd.querySelector('.popup__btn-save')
-
-const placesTable = document.querySelector('.places__table')
-
-const formsList = Array.from(document.forms)  //ищем все форма в документе перекидываем в массив
-
-import { initialPlaces } from './cardsData.js'
 import { openPopup, closePopup } from './utils.js'
 import { Card } from './Card.js'
 import { settingsObject, FormValidator } from './validate.js'
@@ -48,6 +39,30 @@ function renderPlaceCard() {
 //вызов функции
 renderPlaceCard()
 
+
+class Popup {
+  constructor(popupName) {
+    this.popupName = popupName
+    this.popupElement = document.querySelector(this.popupName)
+  }
+  open() {
+    this.popupElement.classList.add('popup_opened')
+      // document.addEventListener('keydown', closePopupFromEvt)   //слушатель закрытия по Esp
+      // popupName.addEventListener('mousedown', closePopupFromEvt)    //слушатель закрытия по click
+  }
+  close() {
+    this.popupElement.classList.remove('popup_opened')
+  }
+  setEventListeners() {
+
+  }
+  _handleEscClose() {
+
+  }
+}
+
+
+
 // ___________________________________Функция отработки submit на попапе добавления карточки
 function submitPlaceAdd() {
   const element = {}
@@ -62,20 +77,26 @@ function submitPlaceAdd() {
 function submitProfileEdit() {
   profilePersonName.textContent = inpPopupProfileEditName.value
   profilePersonDesc.textContent = inpPopupProfileEditDesc.value
-  closePopup(popupProfileEdit)  //передавать OpenedPopupName??
+  // closePopup(popupProfileEdit)  //передавать OpenedPopupName??
 };
 
 //____________________________________Открытие попапа Редактирование профиля по кнопке
 btnProfileEdit.addEventListener('click', function() {
   inpPopupProfileEditName.value = profilePersonName.textContent
   inpPopupProfileEditDesc.value = profilePersonDesc.textContent
-  openPopup(popupProfileEdit)
+  const openedPopup = new Popup('#popupProfileEdit')
+  openedPopup.open()
+  // console.log(openedPopup)
+  // openPopup(popupProfileEdit)
 });
 //____________________________________Открытие попапа Добавление карточки по кнопке
 btnPlaceAdd.addEventListener('click', () => {openPopup(popupPlaceAdd)});
 
 //____________________________________закрытие попапа редактирования профиля
-btnClosePopupProfileEdit.addEventListener('mousedown', () => {closePopup(popupProfileEdit)});
+btnClosePopupProfileEdit.addEventListener('mousedown', () => {
+  openedPopup.close()
+  // closePopup(popupProfileEdit)
+});
 //____________________________________закрытие попапа добавления карточки
 btnClosePopupAdd.addEventListener('mousedown', () => {closePopup(popupPlaceAdd)});
 //____________________________________закрытие попапа просмотра картинок
