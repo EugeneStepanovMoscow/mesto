@@ -26,6 +26,14 @@ export const placesTable = document.querySelector('.places__table')
 export const containerSelector = '.places__table'
 export const placeSelector = 'place-template'
 
+export const imgPopupPlaceView = document.querySelector('.popup__image')
+export const figcapPopupPlaceView = document.querySelector('.popup__figcaption')
+
+export const profileSelectors = {
+  name: '.profile__person-name',
+  profession: '.profile__person-description'
+}
+
 export const formsList = Array.from(document.forms)  //ищем все форма в документе перекидываем в массив
 
 export const initialPlaces = [

@@ -2,12 +2,20 @@ import { imgPopupPlaceView, figcapPopupPlaceView, openPopup } from './utils.js'
 
 
 class Card {
-  constructor(data, cardSelector) {
-
-    this._name = data.name;
-    this._imgLink = data.link;
+  constructor({name, link, handleCardClick}, cardSelector) {
+    this._name = name;
+    this._imgLink = link;
+    this._CardClick = handleCardClick;
     this._cardSelector = cardSelector;
   }
+
+  // constructor(data, cardSelector) {
+  //   this._name = data.name;
+  //   this._imgLink = data.link;
+  //   this._cardSelector = cardSelector;
+  // }
+
+
 //получение темплейт структуры из HTML
   _getTemplate() {
     const cardElement = document.getElementById(this._cardSelector).content.querySelector('.place').cloneNode(true);
@@ -33,7 +41,8 @@ class Card {
     })
   //слушатель открытия попапа просмотра
     this._element.querySelector('.place__image').addEventListener('click', () => {
-      this._openPopupPlaceView()
+      this._CardClick(this._name, this._imgLink)
+      
     })
   }
 
