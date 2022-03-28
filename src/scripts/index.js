@@ -1,3 +1,7 @@
+import '../pages/index.css'
+
+
+
 import {
   btnProfileEdit,
   btnPlaceAdd,
