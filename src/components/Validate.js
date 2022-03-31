@@ -10,7 +10,6 @@ const settingsObject = {
 class FormValidator {
   constructor(settings, formElement) {
     this.formElement = formElement
-
     this.formSelector = settings.formSelector
     this.inputSelector = settings.inputSelector
     this.submitButtonSelector = settings.submitButtonSelector

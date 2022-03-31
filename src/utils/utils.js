@@ -1,5 +1,6 @@
 const imgPopupPlaceView = popupPlaceView.querySelector('.popup__image');
 const figcapPopupPlaceView = popupPlaceView.querySelector('.popup__figcaption');
+
 let openedPopupName = ''
 
 //___________________________________Функция открытия попапа-
