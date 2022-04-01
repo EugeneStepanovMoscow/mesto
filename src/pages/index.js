@@ -74,11 +74,13 @@ btnProfileEdit.addEventListener('click', function() {
   const user = userInfo.getUserInfo()
   inpPopupProfileEditName.value = user.name
   inpPopupProfileEditDesc.value = user.profession
+  formValidatorPopupProfileEdit.changeButtonStatus(personFormPopup._inputs, personFormPopup.popupButtonSubmit)
   personFormPopup.open()
 });
 
-//_________________________слушатель кнопки добавление карточки
+//_____________________________________Открытие попапа добавления карточки по кнопке
 btnPlaceAdd.addEventListener('click', () => {
+  formValidatorPopupPlaceAdd.changeButtonStatus(placeFormPopup._inputs, placeFormPopup.popupButtonSubmit)
   placeFormPopup.open()
 });
 

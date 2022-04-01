@@ -35,7 +35,7 @@ class FormValidator {
     const buttonElement = formElement.querySelector(this.submitButtonSelector)
     inputsList.forEach((input) => {
       input.addEventListener('input', () => {
-        this._changeButtonStatus(inputsList, buttonElement)
+        this.changeButtonStatus(inputsList, buttonElement)
         this._isValid(formElement, input)
       })
     })
@@ -45,7 +45,7 @@ class FormValidator {
     return inputsList.some((inputElement) => {return !inputElement.validity.valid})
   }
 
-  _changeButtonStatus(inputsList, buttonElement) {
+  changeButtonStatus(inputsList, buttonElement) {
     if (this._hasInvalidInput(inputsList)) {
         buttonElement.classList.add(this.inactiveButtonClass)
         buttonElement.setAttribute("disabled", "disabled")

@@ -11,7 +11,7 @@ export default class Popup {
   }
   open() {
     this.popupElement.classList.add('popup_opened')
-    this._handleEscClose()
+    document.addEventListener('keydown', this.escCloseFunction)
   }
   close() {
     this.popupElement.classList.remove('popup_opened')
@@ -28,9 +28,10 @@ export default class Popup {
         this.close()
       }
     })
-
   }
+  //Закрытие по ESC
   _handleEscClose() {
-    document.addEventListener('keydown', this.escCloseFunction)
+    this.close()
+    // document.addEventListener('keydown', this.escCloseFunction)
   }
 }

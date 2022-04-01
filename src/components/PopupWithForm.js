@@ -26,8 +26,6 @@ export default class PopupWithForm extends Popup {
   close() {
     super.close()
     this.form.reset()
-    this.popupButtonSubmit.setAttribute("disabled", "disabled")
-    this.popupButtonSubmit.classList.add('popup__btn-save_blocked')
   }
 
 }
