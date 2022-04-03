@@ -3,20 +3,24 @@ export default class Popup {
     this.popupName = popupName
     this.popupElement = document.querySelector(this.popupName)
     this.closeButton = this.popupElement.querySelector('.popup__btn-close')
-    this.escCloseFunction = function (evt) {
-      if (evt.key === 'Escape') {
-        this.close()
-      }
-    }
+    this._escCloseFunction = this._escCloseFunction.bind(this)
   }
+
   open() {
     this.popupElement.classList.add('popup_opened')
-    document.addEventListener('keydown', this.escCloseFunction)
+    document.addEventListener('keydown', this._escCloseFunction)
   }
   close() {
     this.popupElement.classList.remove('popup_opened')
-    document.removeEventListener('keydown', this.escCloseFunction)
+    document.removeEventListener('keydown', this._escCloseFunction)
   }
+  _escCloseFunction(evt) {
+    evt.preventDefault()
+    if (evt.key === 'Escape') {
+      this.close()
+    }
+  }
+
   setEventListeners() {
     //Закрытие по кнопке
     this.closeButton.addEventListener('mousedown', () => {
@@ -29,9 +33,8 @@ export default class Popup {
       }
     })
   }
-  //Закрытие по ESC
-  _handleEscClose() {
-    this.close()
-    // document.addEventListener('keydown', this.escCloseFunction)
-  }
+
+
+
+
 }
