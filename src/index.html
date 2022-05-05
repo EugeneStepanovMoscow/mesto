@@ -71,7 +71,7 @@
             <fieldset class="popup__fieldset">
               <input class="popup__inp" name="name" type="text" value="" placeholder="Название" minlength="2" maxlength="30" required>
               <span class="popup__inp-errmsg inperr-name"></span>
-              <input class="popup__inp" name="description" type="url" value="https://fs3.fotoload.ru/f/0821/1629586531/1024x768/121856b60a.jpg" placeholder="Ссылка на картинку" minlength="3" required >
+              <input class="popup__inp" name="description" type="url" value="" placeholder="Ссылка на картинку" minlength="3" required >
               <span class="popup__inp-errmsg inperr-description"></span>
               <button class="popup__btn-save popup__btn-save_blocked" type="submit" disabled>Создать</button>
             </fieldset>
@@ -105,14 +105,14 @@
       <div class="popup" id="popupProfileImgEdit">
         <div class="popup__container">
           <h2 class="popup__title">Обновить аватар</h2>
-          <form class="popup__form" name="popupProfileImgEdit" id="popupProfileImgEdit" novalidate>
+          <form class="popup__form" name="popupProfileImgEdit" id="popupProfileImgEditForm" novalidate>
             <fieldset class="popup__fieldset">
               <input class="popup__inp popup__inp_type_error" name="name" type="url" value="" placeholder="Ссылка на картинку" minlength="3" required >
               <span class="popup__inp-errmsg inperr-name popup__inp-errmsg_active"></span>
-              <button class="popup__btn-save popup__btn-save_blocked" type="submit" disabled">Сохранить</button>
+              <button class="popup__btn-save popup__btn-save_blocked" type="submit" disabled>Сохранить</button>
             </fieldset>
           </form>
-          <button class="popup__btn-close" id="popupAddPlaceBtnClose" type="button"></button>
+          <button class="popup__btn-close" id="popupProfileImgEditBtnClose" type="button"></button>
         </div>
       </div>
 
