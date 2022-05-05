@@ -5,6 +5,7 @@ export const profilePersonDesc = document.querySelector('.profile__person-descri
 
 export const btnProfileEdit = document.querySelector('.profile__btn-edit');
 export const btnPlaceAdd = document.querySelector('.profile__btn-add')
+export const btnAvatarEdit = document.querySelector('.profile__avatar-btn-edit')
 
 const popupsSection = document.querySelector('.popups')
 export const btnClosePopupProfileEdit = popupsSection.querySelector('#popupProfileEditBtnClose');
@@ -30,40 +31,26 @@ export const placeSelector = 'place-template'
 export const imgPopupPlaceView = document.querySelector('.popup__image')
 export const figcapPopupPlaceView = document.querySelector('.popup__figcaption')
 
+export const placeLikes = document.querySelector('.place__likes')
+export const placeButtonDelit = document.querySelector('.place__btn-delit')
+
 export const profileSelectors = {
   name: '.profile__person-name',
-  profession: '.profile__person-description'
+  profession: '.profile__person-description',
+  photo: '.profile__image'
 }
+
 
 export const formsList = Array.from(document.forms)  //ищем все форма в документе перекидываем в массив
 
-export const initialPlaces = [
-  {
-    name: 'Архыз',
-    description: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    description: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    description: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    description: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    description: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    description: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 export const formValidatorPopupProfileEdit = new FormValidator(settingsObject, formsList[0])
 export const formValidatorPopupPlaceAdd = new FormValidator(settingsObject, formsList[1])
+export const formValidatorPopupAvatarEdit = new FormValidator(settingsObject, formsList[3])
+
+export const initialPlaces = [
+];
+
+// export var cardForDeleteId = ''
+// export const cardForDeleteElement
 

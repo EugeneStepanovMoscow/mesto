@@ -13,7 +13,11 @@
 .popup__inp:focus {
   outline: 0;
 }
-
+@media screen and (max-width: 914px) {
+  .popup__inp {
+    width: 238px;
+  }
+}
 
 
 

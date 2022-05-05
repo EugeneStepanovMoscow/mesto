@@ -13,19 +13,36 @@ export default class PopupWithForm extends Popup {
     this._inputs.forEach((input) =>
       popupInputObject[input.name] = input.value
     )
+    popupInputObject.link = popupInputObject.description
+    delete popupInputObject.description
+    popupInputObject.likes = []
+    const owner = {}
+    //---------------------------------------------------
+    owner._id = '5bb7df60df909a3064279588'
+    popupInputObject.owner = owner
     return popupInputObject
   }
+
+  //------------установка слушателей
   setEventListeners() {
     super.setEventListeners()
+    //слушатель сабмита формы
     this.form.addEventListener('submit', (evt) => {
       evt.preventDefault()
+      this.popupButtonSubmit.innerText = 'Сохранение'
       this.submitFunction(this._getInputValues())
-      this.close()
     })
   }
+
   close() {
     super.close()
     this.form.reset()
   }
+
+  deleteCard(a, b) {
+    console.log(a)
+    console.log(b)
+  }
+
 
 }
