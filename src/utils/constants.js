@@ -1,4 +1,14 @@
-import { settingsObject, FormValidator } from '../components/Validate.js'
+import { FormValidator } from '../components/Validate.js'
+
+
+const settingsObject = {
+  formSelector: '.popup__form',                   //+
+  inputSelector: '.popup__inp',                   //+
+  submitButtonSelector: '.popup__btn-save',       //+
+  inactiveButtonClass: 'popup__btn-save_blocked', //+
+  inputErrorClass: 'popup__inp_type_error',       //+
+  errorClass: 'popup__inp-errmsg_active'
+}
 
 export const profilePersonName = document.querySelector('.profile__person-name');
 export const profilePersonDesc = document.querySelector('.profile__person-description');
@@ -51,6 +61,6 @@ export const formValidatorPopupAvatarEdit = new FormValidator(settingsObject, fo
 export const initialPlaces = [
 ];
 
-// export var cardForDeleteId = ''
-// export const cardForDeleteElement
+
+
 

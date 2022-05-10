@@ -5,6 +5,7 @@ class Card {
     likes,
     ownerId,
     cardId,
+    userIdInfo,
     handleCardClick,
     cardDeleteApi,
     addLikesApi,
@@ -17,6 +18,7 @@ class Card {
     this._likes = likes;
     this._ownerId = ownerId;
     this._cardId = cardId;
+    this._userIdInfo = userIdInfo;
     this._CardClick = handleCardClick;
     this._cardSelector = cardSelector;
     this._cardDeleteApi = cardDeleteApi;
@@ -73,14 +75,14 @@ class Card {
     //проверка на поставленный лайк и изменение иконки лайка
     if (this._likes.length > 0) {
       this._likes.forEach((like) => {
-        if (like._id === '5bb7df60df909a3064279588') {
+        if (like._id === this._userIdInfo) {
           this._element.querySelector('.place__btn-like').classList.add('place__btn-like_active')
         }
       })
 
     }
     //проверка на хозяина карточки и отрисовка кнопки удадления
-    if (this._ownerId === '5bb7df60df909a3064279588') {
+    if (this._ownerId === this._userIdInfo) {
       this._element.querySelector('.place__btn-delit').classList.remove('place__btn-delit_off')
     }
     this._setEventListeners()

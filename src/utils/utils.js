@@ -24,6 +24,6 @@ function closePopup(popupName) {
   popupName.removeEventListener('click', closePopupFromEvt)   //удаление слушателя закрития по click
 }
 
-
-
 export { imgPopupPlaceView, figcapPopupPlaceView, openPopup, closePopupFromEvt, closePopup }
+
+

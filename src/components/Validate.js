@@ -1,12 +1,3 @@
-const settingsObject = {
-  formSelector: '.popup__form',                   //+
-  inputSelector: '.popup__inp',                   //+
-  submitButtonSelector: '.popup__btn-save',       //+
-  inactiveButtonClass: 'popup__btn-save_blocked', //+
-  inputErrorClass: 'popup__inp_type_error',       //+
-  errorClass: 'popup__inp-errmsg_active'
-}
-
 class FormValidator {
   constructor(settings, formElement) {
     this.formElement = formElement
@@ -69,7 +60,7 @@ class FormValidator {
   }
 }
 
-export {settingsObject, FormValidator }
+export { FormValidator }
 
 
 
