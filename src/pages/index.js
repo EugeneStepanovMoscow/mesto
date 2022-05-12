@@ -1,6 +1,7 @@
 var cardForDeleteId = ''
 var cardForDeleteElement = ''
 const placeElement = []
+let idUser = ''
 import '../pages/index.css'
 
 import {
@@ -37,10 +38,12 @@ function cardСreating(initialPlace, placeSelector, userIdInfo) {
     handleCardClick: (name, link) => {
       imagePopup.open(name, link)
     },
-    cardDeleteApi: (cardId) => {
-      api.deleteCard(cardId)
-        .catch(err => console.log(`Ошибка.....: ${err}`))
-    },
+    // cardDeleteApi: (cardId) => {
+    //   api.deleteCard(cardId)
+    //     .catch(err => console.log(`Ошибка.....: ${err}`))
+    // },
+    // полностью убрал часть када. т.к. отбращение к api и удаление карточки из разметки
+    // реализовано в объекте попапа удаления карточки (cardDeletePopup)
     addLikesApi: (cardId, cardLikes) => {
       api.addLikes(cardId)
         .then((addLikeResponse) => cardLikes.textContent = addLikeResponse.likes.length)
@@ -71,7 +74,7 @@ const placeFormPopup = new PopupWithForm({
   submitFunction: (cardData) => {
     api.sendCard(cardData.name, cardData.description)
       .then((resCardData) => {
-        const placeElement = cardСreating(resCardData, placeSelector, resCardData.owner._id)
+        const placeElement = cardСreating(resCardData, placeSelector, idUser)
         cardsSection.addItem(placeElement)
         placeFormPopup.close()
       })
@@ -156,8 +159,8 @@ formValidatorPopupAvatarEdit.enableValidation()
 
 
 const api = new API('https://mesto.nomoreparties.co/v1/cohort-40/', {
-  'Accept': 'aplication/json',
-  'Content-Type': 'aplication/json; charset=utf-8',
+  'Accept': 'application/json',
+  'Content-Type': 'application/json; charset=utf-8',
   'authorization': '8979c03d-d651-4578-8bdf-d2973cc4dde5'
 })
 
@@ -167,14 +170,17 @@ Promise.all([
   api.getPersonInfo()
   ])
   .then((values) => {
+    idUser = values[1]._id
     values[0].forEach((cardData) => {
-      placeElement.push(cardСreating(cardData, placeSelector, values[1]._id)) //.generateCard())
+      placeElement.push(cardСreating(cardData, placeSelector, idUser)) //.generateCard())
     })
-    cardsSection.render(placeElement)
+    cardsSection.renderItems(placeElement)
+    //не совсем понятно требование использовать метод renderItems(у меня его небыло в классе section)
+    //в первой итерации я исправил метот render по вашему требованию (принимает массив карточек а не берет из конструктора)
+    //в данном исправлении фактически меняю только название метода
 
     userInfo.setUserInfo(values[1].name, values[1].about)
     userInfo.setNewAvatar(values[1].avatar)
-    // userIdInfo = values[1]._id
   })
   .catch(err => console.log(`Ошибка.....: ${err}`))
 

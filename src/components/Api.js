@@ -25,7 +25,10 @@ export default class API {
   }
 //---------------------Получение информации о пользователе
   getPersonInfo() {
-    const promise = fetch(`https://nomoreparties.co/v1/cohort-40/users/me`, {
+    const promise = fetch(`${this._baseUrl}users/me`, {
+      //в конструкторе передается url (https://mesto.nomoreparties.co/v1/cohort-40/)
+      //который вдальнейшем используется как baseUrl/
+      //В задании к ПР9 в первом пункте указывается Url (https://nomoreparties.co/v1/cohortId/users/me)
       method: 'GET',
       headers: this._headers
     })
@@ -35,10 +38,7 @@ export default class API {
   getAvatar(avatar) {
     const promise = fetch(`${this._baseUrl}users/me/avatar`, {
       method: 'PATCH',
-      headers: {
-        authorization: '8979c03d-d651-4578-8bdf-d2973cc4dde5',
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
         avatar: avatar
       })
@@ -49,10 +49,7 @@ export default class API {
   addLikes(cardId) {
     const promise = fetch(`${this._baseUrl}cards/${cardId}/likes`, {
       method: 'PUT',
-      headers: {
-        authorization: '8979c03d-d651-4578-8bdf-d2973cc4dde5',
-        'Content-Type': 'application/json'
-      }
+      headers: this._headers
     })
     return this._makeRequest(promise)
   }
@@ -60,10 +57,7 @@ export default class API {
   deleteLikes(cardId) {
     const promise = fetch(`${this._baseUrl}cards/${cardId}/likes`, {
       method: 'DELETE',
-      headers: {
-        authorization: '8979c03d-d651-4578-8bdf-d2973cc4dde5',
-        'Content-Type': 'application/json'
-      }
+      headers: this._headers
     })
     return this._makeRequest(promise)
   }
@@ -71,10 +65,7 @@ export default class API {
   deleteCard(cardId) {
     const promise = fetch(`${this._baseUrl}cards/${cardId}`, {
       method: 'DELETE',
-      headers: {
-        authorization: '8979c03d-d651-4578-8bdf-d2973cc4dde5',
-        'Content-Type': 'application/json'
-      }
+      headers: this._headers
     })
     return this._makeRequest(promise)
   }
@@ -82,10 +73,7 @@ export default class API {
   sendCard(name, link) {
     const promise = fetch(`${this._baseUrl}cards`, {
       method: 'POST',
-      headers: {
-        authorization: '8979c03d-d651-4578-8bdf-d2973cc4dde5',
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: name,
         link: link
@@ -97,10 +85,7 @@ export default class API {
   givePersonInfo(newName, newAbout) {
     const promise = fetch(`${this._baseUrl}users/me`, {
       method: 'PATCH',
-      headers: {
-        authorization: '8979c03d-d651-4578-8bdf-d2973cc4dde5',
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: newName,
         about: newAbout

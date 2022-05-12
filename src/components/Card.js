@@ -58,12 +58,6 @@ class Card {
     })
   }
 
-  cardDelete() {
-    this._cardDeleteApi(this._cardId)
-    this._element.remove()
-    this._element = null
-  }
-
   //наполнение темплейт структуры данными из элементов объекта data и бобавление слушателей
   generateCard() {
     this._element = this._getTemplate()
