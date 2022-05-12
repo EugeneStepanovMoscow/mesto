@@ -6,7 +6,7 @@
 .content{margin:0 auto}
 .profile{align-items:center;display:flex;justify-content:space-between;margin:40px auto 0;width:880px}@media screen and (max-width:914px){.profile{flex-direction:column;margin:43px auto 0;width:282px}}
 .profile__person{align-items:center;display:flex}@media screen and (max-width:914px){.profile__person{flex-direction:column}}
-.profile__image{border-radius:60px;cursor:pointer;height:120px;position:relative;width:120px}
+.profile__image{border-radius:60px;cursor:pointer;height:120px;-o-object-fit:cover;object-fit:cover;position:relative;width:120px}
 .profile__info{display:flex;flex-wrap:wrap;justify-content:space-between;margin-left:30px;width:336px}@media screen and (max-width:914px){.profile__info{justify-content:flex-start;margin:26px 0 0;width:282px}}
 .profile__person-name{font-size:42px;font-weight:500;line-height:48px;margin:0;overflow:hidden;text-align:start;text-overflow:ellipsis;white-space:nowrap;width:310px}@media screen and (max-width:914px){.profile__person-name{font-size:27px;line-height:32.68px;margin:0 10px 0 46px;width:189px}}
 .profile__person-description{font-size:18px;font-weight:400;line-height:21.78px;margin:16px 0 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media screen and (max-width:914px){.profile__person-description{font-size:14px;line-height:16.94px;margin:9px auto 31px}}
