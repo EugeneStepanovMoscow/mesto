@@ -8,7 +8,6 @@ class Card {
     cardId,
     userIdInfo,
     handleCardClick,
-    // cardDeleteApi,
     addLikesApi,
     deleteLikesApi,
     deleteCardPopupOpen,
@@ -22,7 +21,6 @@ class Card {
     this._userIdInfo = userIdInfo;
     this._CardClick = handleCardClick;
     this._cardSelector = cardSelector;
-    // this._cardDelete = cardDelete;
     this._addlikesApi = addLikesApi;
     this._deleteLikesApi = deleteLikesApi;
     this._deleteCardPopupOpen = deleteCardPopupOpen;

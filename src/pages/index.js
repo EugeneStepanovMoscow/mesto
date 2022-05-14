@@ -1,6 +1,5 @@
 let cardForDeleteId = ''
 let cardForDeleteElement = ''
-// const placeElement = []
 let idUser = ''
 
 import '../pages/index.css'
@@ -39,12 +38,6 @@ function cardСreating(initialPlace, placeSelector, userIdInfo) {
     handleCardClick: (name, link) => {
       imagePopup.open(name, link)
     },
-    // cardDelete: (cardId) => {
-    //   // cardForDeleteElement.remove(),
-    //   // cardForDeleteElement = null
-    //   // api.deleteCard(cardId)
-    //   //   .catch(err => console.log(`Ошибка.....: ${err}`))
-    // },
     addLikesApi: (cardId, cardLikes) => {
       api.addLikes(cardId)
         .then((addLikeResponse) => cardLikes.textContent = addLikeResponse.likes.length)
@@ -64,7 +57,6 @@ function cardСreating(initialPlace, placeSelector, userIdInfo) {
   },
    placeSelector
   )
-  // cardForDeleteElement = place
   return place.generateCard()
 }
 

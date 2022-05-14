@@ -14,15 +14,4 @@ export default class Section {
       this._renderer(item);
     });
   }
-  // изначальный вид метода render (до проверок)
-  // render() {
-  //   this._renderedItems.forEach(item => {
-  //     this._renderer(item);
-  //   });
-  // }
-  // при первой проверке метод изменил (он стал принимать массив карточек не из конструктора)
-  // сейчас фактически меняю название метода с render на renderItems
-
-
-
 }
