@@ -1,0 +1,42 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "*Russian travel* - это проектная работа, выполненная в рамках четвертого/пятого спринта в школе **Яндекс.Практикум**.\r В проекте использованны следующие технологии:\r * Верстка блоков с использованием *Flex*;\r * Верстка блоков с использованием *Gred*;\r * Работа выполнена по методологогии *БЭМ*;\r * Функции редактирования профиля и карточек мест выполнена с использованием *JavaScript*.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EugeneStepanovMoscow/mesto.git"
+  },
+  "author": "StEugene",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EugeneStepanovMoscow/mesto/issues"
+  },
+  "homepage": "https://github.com/EugeneStepanovMoscow/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "autoprefixer": "^10.4.4",
+    "babel-loader": "^8.2.4",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "cssnano": "^5.1.5",
+    "gh-pages": "^3.2.3",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss-loader": "^6.2.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "dependencies": {
+    "core-js": "^3.21.1"
+  }
+}

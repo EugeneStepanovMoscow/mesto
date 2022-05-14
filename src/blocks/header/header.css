@@ -1,0 +1,21 @@
+/* проверить скролл на мылых разрешениях. (ширина) */
+.header {
+  width: 880px;
+  min-height: 74px;
+  margin: 0 auto;
+  border-bottom: 1px solid #545454B3;
+  box-sizing: border-box;
+
+}
+@media screen and (max-width: 614px) {
+  .header{
+    min-width: 282px;
+    min-height: 56px;
+    margin: 0;
+  }
+}
+@media screen and (min-width: 615px) and (max-width: 914px) {
+  .header {
+    width: 581px;
+  }
+}

@@ -1,0 +1,14 @@
+.profile__avatar-btn-edit-img {
+  width: 26px;
+  height: 26px;
+  opacity: 1;
+  color: transparent;
+  /* display: none; */
+  z-index: 1;
+}
+.profile__avatar-btn-edit-img:hover{
+  /* display: block; */
+    /* opacity: 1; */
+    transition: .5s;
+    cursor: pointer;
+}

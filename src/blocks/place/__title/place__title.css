@@ -1,0 +1,7 @@
+.place__title {
+  width: 246px;
+  height: 43px;
+  margin: 16px auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+}

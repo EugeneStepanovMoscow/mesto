@@ -1,0 +1,12 @@
+.popup_view {
+  max-width: 816px;
+  height: 540px;
+  padding: 0;
+  border-radius: 0;
+}
+@media screen and (max-width: 914px) {
+  .popup_view {
+    width: 240px;
+    height: 299px;
+  }
+}

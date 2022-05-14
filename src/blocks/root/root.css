@@ -1,0 +1,14 @@
+.root {
+  min-height: 100vh;
+  background-color: #000;
+  color: #FFF;
+  font-family: 'Inter', 'Arial', sans-serif;
+  padding-top: 45px;
+  padding-bottom: 60px;
+}
+@media screen and (max-width: 914px) {
+  .root {
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
+}

@@ -1,0 +1,23 @@
+.popup__inp {
+  width: 100%;
+  height: 27px;
+  margin: 0 0 3px 0;
+  padding: 0 0 9px 0;
+  box-sizing: border-box;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.94px;
+}
+.popup__inp:focus {
+  outline: 0;
+}
+@media screen and (max-width: 914px) {
+  .popup__inp {
+    width: 238px;
+  }
+}
+
+
+

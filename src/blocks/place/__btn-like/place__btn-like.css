@@ -1,0 +1,15 @@
+.place__btn-like {
+  width: 23px;
+  height: 19px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  background-image: url(../../../images/Heart.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.place__btn-like:hover {
+  opacity: .5;
+  transition: .5s;
+  cursor: pointer;
+}
