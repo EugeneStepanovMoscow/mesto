@@ -1,3 +1,4 @@
+
 class Card {
   constructor({
     name,
@@ -7,7 +8,7 @@ class Card {
     cardId,
     userIdInfo,
     handleCardClick,
-    cardDeleteApi,
+    // cardDeleteApi,
     addLikesApi,
     deleteLikesApi,
     deleteCardPopupOpen,
@@ -21,7 +22,7 @@ class Card {
     this._userIdInfo = userIdInfo;
     this._CardClick = handleCardClick;
     this._cardSelector = cardSelector;
-    this._cardDeleteApi = cardDeleteApi;
+    // this._cardDelete = cardDelete;
     this._addlikesApi = addLikesApi;
     this._deleteLikesApi = deleteLikesApi;
     this._deleteCardPopupOpen = deleteCardPopupOpen;
@@ -49,7 +50,7 @@ class Card {
     })
   //слушатель удаления карточки
     this._element.querySelector('.place__btn-delit').addEventListener('click', () => {
-      this._deleteCardPopupOpen(this._cardId, this._element)
+      this._deleteCardPopupOpen(this._cardId, this)
     })
 
   //слушатель открытия попапа просмотра
@@ -61,6 +62,7 @@ class Card {
   //наполнение темплейт структуры данными из элементов объекта data и бобавление слушателей
   generateCard() {
     this._element = this._getTemplate()
+
     this._element.querySelector('.place__image').src = this._imgLink
     this._element.querySelector('.place__image').alt = this._name
     this._element.querySelector('.place__name').textContent = this._name
@@ -81,6 +83,10 @@ class Card {
     }
     this._setEventListeners()
     return this._element
+  }
+  deleteCard() {
+    this._element.remove()
+    this._element = null
   }
 }
 

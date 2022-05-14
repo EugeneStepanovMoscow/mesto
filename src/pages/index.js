@@ -1,7 +1,8 @@
-var cardForDeleteId = ''
-var cardForDeleteElement = ''
-const placeElement = []
+let cardForDeleteId = ''
+let cardForDeleteElement = ''
+// const placeElement = []
 let idUser = ''
+
 import '../pages/index.css'
 
 import {
@@ -38,12 +39,12 @@ function cardСreating(initialPlace, placeSelector, userIdInfo) {
     handleCardClick: (name, link) => {
       imagePopup.open(name, link)
     },
-    // cardDeleteApi: (cardId) => {
-    //   api.deleteCard(cardId)
-    //     .catch(err => console.log(`Ошибка.....: ${err}`))
+    // cardDelete: (cardId) => {
+    //   // cardForDeleteElement.remove(),
+    //   // cardForDeleteElement = null
+    //   // api.deleteCard(cardId)
+    //   //   .catch(err => console.log(`Ошибка.....: ${err}`))
     // },
-    // полностью убрал часть када. т.к. отбращение к api и удаление карточки из разметки
-    // реализовано в объекте попапа удаления карточки (cardDeletePopup)
     addLikesApi: (cardId, cardLikes) => {
       api.addLikes(cardId)
         .then((addLikeResponse) => cardLikes.textContent = addLikeResponse.likes.length)
@@ -54,14 +55,16 @@ function cardСreating(initialPlace, placeSelector, userIdInfo) {
         .then((addLikeResponse) => cardLikes.textContent = addLikeResponse.likes.length)
         .catch(err => console.log(`Ошибка.....: ${err}`))
     },
-    deleteCardPopupOpen: (cardIdForDelete, cardElementForDelete) => {
+    deleteCardPopupOpen: (cardIdForDelete, place) => {
+
       cardDeletePopup.open()
       cardForDeleteId = cardIdForDelete
-      cardForDeleteElement = cardElementForDelete
+      cardForDeleteElement = place
     },
   },
    placeSelector
   )
+  // cardForDeleteElement = place
   return place.generateCard()
 }
 
@@ -106,8 +109,7 @@ const cardDeletePopup = new PopupWithForm({
   submitFunction: () => {
     api.deleteCard(cardForDeleteId)
       .then(() => {
-        cardForDeleteElement.remove(),
-        cardForDeleteElement = null
+        cardForDeleteElement.deleteCard()
         cardDeletePopup.close()
       })
       .catch(err => console.log(`Ошибка.....: ${err}`))
@@ -171,14 +173,7 @@ Promise.all([
   ])
   .then((values) => {
     idUser = values[1]._id
-    values[0].forEach((cardData) => {
-      placeElement.push(cardСreating(cardData, placeSelector, idUser)) //.generateCard())
-    })
-    cardsSection.renderItems(placeElement)
-    //не совсем понятно требование использовать метод renderItems(у меня его небыло в классе section)
-    //в первой итерации я исправил метот render по вашему требованию (принимает массив карточек а не берет из конструктора)
-    //в данном исправлении фактически меняю только название метода
-
+    cardsSection.renderItems(values[0])
     userInfo.setUserInfo(values[1].name, values[1].about)
     userInfo.setNewAvatar(values[1].avatar)
   })
@@ -186,8 +181,8 @@ Promise.all([
 
 const cardsSection = new Section({
   items: initialPlaces,
-  renderer: (initialPlace) => {
-    cardsSection.addItem(initialPlace)
+  renderer: (item) => {
+    cardsSection.addItem(cardСreating(item, placeSelector, idUser))
   }
 },
   containerSelector
